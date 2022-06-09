@@ -26,14 +26,13 @@ public class Caric : MonoBehaviour
 
     public virtual void Die()
     {
-        anim.SetBool("Walk", false);
-        anim.SetBool("Die", true);
+        anim.SetBool("isWalk", false);
+        anim.SetBool("isDie", true);
         SetDieDelay(1f);
     }
     public virtual void Hit()
     {   
-        anim.SetBool("Walk", false);
-        anim.SetTrigger("Hit");
+        anim.SetTrigger("isHit");
         SetDelay(0.3f);
         Debug.Log("Hp : " + Hp);
     }

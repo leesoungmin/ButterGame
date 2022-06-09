@@ -55,7 +55,7 @@ public class EnemyBase : Caric
                     spriteRenderer.flipX = (Target_Pos.x - transform.position.x < 0) ? true : false;
                     Direction = (Target_Pos.x - transform.position.x < 0) ? -1 : 1;
 
-                    anim.SetBool("Walk", true);
+                    anim.SetBool("isWalk", true);
                     
                     CS = CARICSTATE.MOVE;
 
@@ -72,7 +72,7 @@ public class EnemyBase : Caric
 
                 if(Mathf.Abs(Distance) <= 0.02f * MoveSpeed)
                 {
-                    anim.SetBool("Walk", false);
+                    anim.SetBool("isWalk", false);
                     SetDelay(3f);
                 }
                 else
@@ -97,7 +97,7 @@ public class EnemyBase : Caric
 
                 if(DelayTime < J.WorldTime)
                 {
-                    anim.SetBool("Walk", false);
+                    anim.SetBool("isWalk", false);
                     CS = CARICSTATE.IDLE;
                 }
 

@@ -37,9 +37,9 @@ public partial class Player_Main : Caric
         {
             case CARICSTATE.IDLE:
                 
-                anim.SetBool("Walk", false);
-                anim.SetBool("Jump", false);
-                anim.SetBool("Fall", false);
+                anim.SetBool("isWalk", false);
+                anim.SetBool("isJump", false);
+                //anim.SetBool("Fall", false);
                     
                 break;
             case CARICSTATE.MOVE:
@@ -51,8 +51,8 @@ public partial class Player_Main : Caric
                 
                 if(rigid.velocity.y < 0)
                 {
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Fall", true);
+                    anim.SetBool("isWalk", false);
+                    //anim.SetBool("Fall", true);
                     CS = CARICSTATE.FALL;
                 }
                 
@@ -61,9 +61,9 @@ public partial class Player_Main : Caric
                 
                 if(IsGround && rigid.velocity.y == 0)
                 {
-                    anim.SetBool("Walk", false);
-                    anim.SetBool("Jump", false);
-                    anim.SetBool("Fall", false);
+                    anim.SetBool("isWalk", false);
+                    anim.SetBool("isJump", false);
+                    //anim.SetBool("Fall", false);
                     CS = CARICSTATE.IDLE;
                 }
                 
@@ -86,15 +86,15 @@ public partial class Player_Main : Caric
 
         if(x != 0 && CS == CARICSTATE.IDLE)
         {
-            anim.SetBool("Walk", true);
+            anim.SetBool("isWalk", true);
             CS = CARICSTATE.MOVE;
         }
         if(Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
             rigid.AddForce(Vector2.up * JumpForce);
             
-            anim.SetBool("Walk", false);
-            anim.SetBool("Jump", true);
+            anim.SetBool("isWalk", false);
+            anim.SetBool("isJump", true);
             
             IsGround = false;
             CS = CARICSTATE.JUMP;
