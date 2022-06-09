@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject Enemy_Goblin = null;
+    public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
     public float CurSpawnTime = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Enemy_Goblin = Resources.Load<GameObject>("Prefab/E_Goblin");
+        Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
 
         EnemySpawnPoints = J.Find_Child_List("Point", GameObject.Find("EnemySpawnPoints"));
 
@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
 
     public void EnemyCreate()
     {
-        GameObject goblin = Instantiate(Enemy_Goblin); // 브릭 생성
+        GameObject goblin = Instantiate(Enemy_GroundElement); // 브릭 생성
         goblin.name = "goblin";
         //goblin.transform.SetParent(Brick_Parent.transform);
         goblin.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
