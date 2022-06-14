@@ -12,6 +12,7 @@ public partial class J : MonoBehaviour
     public static JudgmentManager JudgmentManager = null;
     public static DestroyManager DestroyManager = null;
     public static SpawnManager SpawnManager = null;
+    public static StageManager stageManager = null;
 
     // Start is called before the first frame update
     public static void Start()
@@ -21,6 +22,7 @@ public partial class J : MonoBehaviour
         JudgmentManager = GameObject.Find("Manager").transform.Find("Judgment").GetComponent<JudgmentManager>();
         DestroyManager = GameObject.Find("Manager").transform.Find("Destroy").GetComponent<DestroyManager>();
         SpawnManager = GameObject.Find("Manager").transform.Find("Spawn").GetComponent<SpawnManager>();
+        stageManager = GameObject.Find("Manager").transform.Find("Stage").GetComponent<StageManager>();
     }
 
     // Update is called once per frame

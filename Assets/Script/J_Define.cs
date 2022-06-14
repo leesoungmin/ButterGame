@@ -22,6 +22,33 @@ public enum INGAMESTEP
     END,
 }
 
+public enum INGAMESTATE
+{ 
+    GROUNDSTATE,
+    WATERSTATE,
+    ICESTATE,
+    LIGHTNINGSTATE,
+    FIRESTATE,
+}
+
+
+public enum INGAMESTAGE
+{
+    FIRSTSTAGE,
+    SECONDSTAGE,
+    THIRDSTAGE,
+}
+
+public enum ENEMYPROPERTY
+{ 
+    GROUND,
+    WATER,
+    ICE,
+    LIGHTNING,
+    FIRE,
+}
+
+
 public partial class J : MonoBehaviour
 {
     

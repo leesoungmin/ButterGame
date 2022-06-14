@@ -852,6 +852,7 @@ Transform:
   - {fileID: 799632050}
   - {fileID: 1973338277}
   - {fileID: 1566151722}
+  - {fileID: 946863929}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -937,6 +938,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &946863928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946863929}
+  - component: {fileID: 946863930}
+  m_Layer: 0
+  m_Name: Stage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &946863929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946863928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 913532000}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946863930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946863928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dec728d8ff96bf46a9b3d32fd3dd734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingameState: 0
 --- !u!1 &1038994753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,9 +1644,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42bc05af54ca8d4a9a4a00112cc3986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ground_Enemies:
+  - {fileID: 5178203653979842920, guid: dd65fdd6097a3d44781b241e3dc01548, type: 3}
+  - {fileID: 7261309762008027421, guid: a2e98ca3a4a711c4ab6e1aa852df24d9, type: 3}
   Enemy_GroundElement: {fileID: 0}
   EnemySpawnPoints: []
   CurSpawnTime: 0
+  RandomEnemyType: 0
 --- !u!1 &1973338276
 GameObject:
   m_ObjectHideFlags: 0

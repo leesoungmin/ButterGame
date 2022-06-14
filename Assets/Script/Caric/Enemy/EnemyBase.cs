@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class EnemyBase : Caric
 {
-    
+    public ENEMYPROPERTY enemyProperty;
+
     public Vector2 Target_Pos = Vector2.zero;
 
     SpriteRenderer spriteRenderer = null;
 
     int Direction = 0;
+
+    public float curAttackTime = 0;
+    public float maxAttackTime = 0;
+
+    private void OnEnable()
+    {
+        maxAttackTime = Random.Range(6f, 13f);
+    }
     // Start is called before the first frame update
     void Init()
     {
@@ -47,7 +56,9 @@ public class EnemyBase : Caric
 
                 int r = Random.Range(0, 2);
 
-                if(r == 0)
+
+
+                if (r == 0)
                 {
                     
                     Target_Pos = new Vector2(Random.Range(-8, 8), transform.position.y);
@@ -55,8 +66,9 @@ public class EnemyBase : Caric
                     spriteRenderer.flipX = (Target_Pos.x - transform.position.x < 0) ? true : false;
                     Direction = (Target_Pos.x - transform.position.x < 0) ? -1 : 1;
 
-                    anim.SetBool("isWalk", true);
-                    
+                    EnemyAttack();
+
+
                     CS = CARICSTATE.MOVE;
 
                 }
@@ -104,6 +116,21 @@ public class EnemyBase : Caric
                 break;
         }
     }
+    
 
+    void EnemyAttack()
+    {
+
+        if (maxAttackTime >= curAttackTime)
+        {
+            anim.SetBool("isAttack", true);
+            curAttackTime = 0;
+        }
+        else
+        {
+            anim.SetBool("isAttack", false);
+            curAttackTime += Time.deltaTime;
+        }
+    }
 
 }
