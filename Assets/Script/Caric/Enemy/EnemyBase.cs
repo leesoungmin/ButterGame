@@ -27,7 +27,7 @@ public class EnemyBase : Caric
         MoveSpeed = 1;
     }
 
-    void Start()
+    protected void Start()
     {
         Init();
 
@@ -36,7 +36,7 @@ public class EnemyBase : Caric
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         EnemyLogic();
     }
@@ -46,6 +46,7 @@ public class EnemyBase : Caric
         switch(CS)
         {
             case CARICSTATE.IDLE:
+
 
                 CS = CARICSTATE.SCAN;
                 // RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 2f);
@@ -57,7 +58,6 @@ public class EnemyBase : Caric
                 int r = Random.Range(0, 2);
 
 
-
                 if (r == 0)
                 {
                     
@@ -66,7 +66,7 @@ public class EnemyBase : Caric
                     spriteRenderer.flipX = (Target_Pos.x - transform.position.x < 0) ? true : false;
                     Direction = (Target_Pos.x - transform.position.x < 0) ? -1 : 1;
 
-                    EnemyAttack();
+                    
 
 
                     CS = CARICSTATE.MOVE;
@@ -82,7 +82,9 @@ public class EnemyBase : Caric
 
                 float Distance = Target_Pos.x - transform.position.x;
 
-                if(Mathf.Abs(Distance) <= 0.02f * MoveSpeed)
+                anim.SetBool("isAttack", false);
+
+                if (Mathf.Abs(Distance) <= 0.02f * MoveSpeed)
                 {
                     anim.SetBool("isWalk", false);
                     SetDelay(3f);
@@ -92,10 +94,22 @@ public class EnemyBase : Caric
                     transform.Translate(transform.right * Direction * MoveSpeed * Time.deltaTime);
                 }
 
+                if (maxAttackTime <= curAttackTime)
+                {
+                    CS = CARICSTATE.ATTACK;
+                    curAttackTime = 0;
+                }
+                else
+                {
+                    curAttackTime += Time.deltaTime;
+                }
+
                 break;
             case CARICSTATE.ATTACK:
+                anim.SetBool("isAttack", true);
                 break;
             case CARICSTATE.HIT:
+                
                 break;
             case CARICSTATE.DIE:
 
@@ -117,20 +131,10 @@ public class EnemyBase : Caric
         }
     }
     
-
-    void EnemyAttack()
+    public void AttackEnd()
     {
-
-        if (maxAttackTime >= curAttackTime)
-        {
-            anim.SetBool("isAttack", true);
-            curAttackTime = 0;
-        }
-        else
-        {
-            anim.SetBool("isAttack", false);
-            curAttackTime += Time.deltaTime;
-        }
+        anim.SetBool("isAttack", false);
+        CS = CARICSTATE.IDLE;
     }
 
 }
