@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa7d9bd610f71842a60ea3198074860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1546225802}
 --- !u!1 &357708690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1601,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1546225802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1053593426854466913, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
+  m_PrefabInstance: {fileID: 1081345998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1566151721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,8 +1651,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ground_Enemies:
   - {fileID: 5178203653979842920, guid: dd65fdd6097a3d44781b241e3dc01548, type: 3}
-  - {fileID: 7261309762008027421, guid: a2e98ca3a4a711c4ab6e1aa852df24d9, type: 3}
-  Enemy_GroundElement: {fileID: 0}
   EnemySpawnPoints: []
   CurSpawnTime: 0
   RandomEnemyType: 0

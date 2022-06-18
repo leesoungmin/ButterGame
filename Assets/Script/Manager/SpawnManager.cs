@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject[] Ground_Enemies = null;
 
-    public GameObject Enemy_GroundElement = null;
+    //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
     public float CurSpawnTime = 0;
 
@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
+        //Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
 
         EnemySpawnPoints = J.Find_Child_List("Point", GameObject.Find("EnemySpawnPoints"));
 
@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
     public void EnemyCreate()
     {
 
-        RandomEnemyType = Random.Range(0, 2);
+        RandomEnemyType = Random.Range(0, Ground_Enemies.Length);
         GameObject enemies = Instantiate(Ground_Enemies[RandomEnemyType]);
         enemies.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
         enemies.transform.localRotation = Quaternion.identity;

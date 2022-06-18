@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class EnemyBase : Caric
 {
-    public ENEMYPROPERTY enemyProperty;
-
-    public Vector2 Target_Pos = Vector2.zero;
-
+    [Header("Enemy Bullet Prefabs")]
+    public GameObject obj_GroundElementBulet = null;
+    public ENEMYTYPE enemyType;
     SpriteRenderer spriteRenderer = null;
-
-    int Direction = 0;
-
-    public float curAttackTime = 0;
-    public float maxAttackTime = 0;
 
     private void OnEnable()
     {
@@ -25,6 +19,10 @@ public class EnemyBase : Caric
         Hp = 10;
         Dmg = 10;
         MoveSpeed = 1;
+        aiState = GetComponent<AiState>();
+
+        aiState.ChangeState(gameObject.AddComponent<EnemyIdle>());
+
     }
 
     protected void Start()
@@ -33,108 +31,111 @@ public class EnemyBase : Caric
 
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        EnemyLogic();
+        //EnemyLogic();
+
     }
 
-    public void EnemyLogic()
-    {
-        switch(CS)
-        {
-            case CARICSTATE.IDLE:
+    // public void EnemyLogic()
+    // {
+    //     switch(CS)
+    //     {
+    //         case CARICSTATE.IDLE:
 
 
-                CS = CARICSTATE.SCAN;
-                // RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 2f);
-                // Debug.DrawRay(transform.position, transform.right * 2, Color.red, 0.3f);
+    //             CS = CARICSTATE.SCAN;
+    //             // RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 2f);
+    //             // Debug.DrawRay(transform.position, transform.right * 2, Color.red, 0.3f);
 
-                break;
-            case CARICSTATE.SCAN:
+    //             break;
+    //         case CARICSTATE.SCAN:
 
-                int r = Random.Range(0, 2);
+    //             int r = Random.Range(0, 2);
 
 
-                if (r == 0)
-                {
+    //             if (r == 0)
+    //             {
                     
-                    Target_Pos = new Vector2(Random.Range(-8, 8), transform.position.y);
+    //                 Target_Pos = new Vector2(Random.Range(-8, 8), transform.position.y);
                     
-                    spriteRenderer.flipX = (Target_Pos.x - transform.position.x < 0) ? true : false;
-                    Direction = (Target_Pos.x - transform.position.x < 0) ? -1 : 1;
+    //                 spriteRenderer.flipX = (Target_Pos.x - transform.position.x < 0) ? true : false;
+    //                 Direction = (Target_Pos.x - transform.position.x < 0) ? -1 : 1;
 
                     
 
 
-                    CS = CARICSTATE.MOVE;
+    //                 CS = CARICSTATE.MOVE;
 
-                }
-                else // WaitTime
-                {
-                    SetDelay(Random.Range(1f, 3f));
-                }
+    //             }
+    //             else // WaitTime
+    //             {
+    //                 SetDelay(Random.Range(1f, 3f));
+    //             }
 
-                break;
-            case CARICSTATE.MOVE:
+    //             break;
+    //         case CARICSTATE.MOVE:
 
-                float Distance = Target_Pos.x - transform.position.x;
+    //             float Distance = Target_Pos.x - transform.position.x;
 
-                anim.SetBool("isAttack", false);
+    //             anim.SetBool("isAttack", false);
 
-                if (Mathf.Abs(Distance) <= 0.02f * MoveSpeed)
-                {
-                    anim.SetBool("isWalk", false);
-                    SetDelay(3f);
-                }
-                else
-                {
-                    transform.Translate(transform.right * Direction * MoveSpeed * Time.deltaTime);
-                }
+    //             if (Mathf.Abs(Distance) <= 0.02f * MoveSpeed)
+    //             {
+    //                 anim.SetBool("isWalk", false);
+    //                 SetDelay(3f);
+    //             }
+    //             else
+    //             {
+    //                 transform.Translate(transform.right * Direction * MoveSpeed * Time.deltaTime);
+    //             }
 
-                if (maxAttackTime <= curAttackTime)
-                {
-                    CS = CARICSTATE.ATTACK;
-                    curAttackTime = 0;
-                }
-                else
-                {
-                    curAttackTime += Time.deltaTime;
-                }
+    //             if (maxAttackTime <= curAttackTime)
+    //             {
+    //                 CS = CARICSTATE.ATTACK;
+    //                 curAttackTime = 0;
+    //             }
+    //             else
+    //             {
+    //                 curAttackTime += Time.deltaTime;
+    //             }
 
-                break;
-            case CARICSTATE.ATTACK:
-                anim.SetBool("isAttack", true);
-                break;
-            case CARICSTATE.HIT:
+    //             break;
+    //         case CARICSTATE.ATTACK:
+    //             anim.SetBool("isAttack", true);
+    //             break;
+    //         case CARICSTATE.HIT:
                 
-                break;
-            case CARICSTATE.DIE:
+    //             break;
+    //         case CARICSTATE.DIE:
 
-                if(DelayTime < J.WorldTime)
-                {
-                    Destroy(gameObject);
-                }
+    //             if(DelayTime < J.WorldTime)
+    //             {
+    //                 Destroy(gameObject);
+    //             }
 
-                break;
-            case CARICSTATE.DELAY:
+    //             break;
+    //         case CARICSTATE.DELAY:
 
-                if(DelayTime < J.WorldTime)
-                {
-                    anim.SetBool("isWalk", false);
-                    CS = CARICSTATE.IDLE;
-                }
+    //             if(DelayTime < J.WorldTime)
+    //             {
+    //                 anim.SetBool("isWalk", false);
+    //                 CS = CARICSTATE.IDLE;
+    //             }
 
-                break;
-        }
-    }
+    //             break;
+    //     }
+    // }
     
-    public void AttackEnd()
-    {
-        anim.SetBool("isAttack", false);
-        CS = CARICSTATE.IDLE;
-    }
+    // public void AttackEnd()
+    // {
+    //     anim.SetBool("isAttack", false);
+    //     CS = CARICSTATE.IDLE;
+    // }
 
 }

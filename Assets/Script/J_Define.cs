@@ -48,6 +48,12 @@ public enum ENEMYPROPERTY
     FIRE,
 }
 
+public enum ENEMYTYPE
+{
+    GROUNDELEMENTATTCK,
+    GROUNDTROLLATTACK,
+}
+
 
 public partial class J : MonoBehaviour
 {
