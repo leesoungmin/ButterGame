@@ -128,5 +128,9 @@ public partial class Player_Main : Caric
             IsGround = true;
         }
     }
+    public override State GetState()
+    {
+        return AttackState;
+    }
 }
 

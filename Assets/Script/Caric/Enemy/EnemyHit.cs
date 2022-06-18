@@ -16,7 +16,4 @@ public class EnemyHit : State
     public override void Exit()
     {
     }
-    public override void SetAttackState(ENEMYTYPE enemyType)
-    {
-    }
 }

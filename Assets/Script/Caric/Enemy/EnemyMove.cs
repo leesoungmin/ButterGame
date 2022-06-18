@@ -28,7 +28,7 @@ public class EnemyMove : State
 
                 if (caric.maxAttackTime <= caric.curAttackTime)
                 {
-                    aiState.ChangeState(gameObject.AddComponent<GroundElementAttack>());
+                    aiState.ChangeState(caric.GetState());
                     caric.curAttackTime = 0;
                 }
                 else
@@ -37,9 +37,6 @@ public class EnemyMove : State
                 }
     }
     public override void Exit()
-    {
-    }
-    public override void SetAttackState(ENEMYTYPE enemyType)
     {
     }
 }

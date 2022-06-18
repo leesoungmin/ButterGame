@@ -27,17 +27,4 @@ public class GroundElementAttack : State
     {
         Instantiate(enemyBase.obj_GroundElementBulet, transform.position, Quaternion.identity);
     }
-
-    public override void SetAttackState(ENEMYTYPE enemyType)
-    {
-        switch(enemyType)
-        {
-            case ENEMYTYPE.GROUNDELEMENTATTCK:
-            AttackState = gameObject.AddComponent<GroundElementAttack>();
-            break;
-            case ENEMYTYPE.GROUNDTROLLATTACK:
-            AttackState = gameObject.AddComponent<GroundTrollAttack>();
-            break;
-        }
-    }
 }

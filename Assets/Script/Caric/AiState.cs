@@ -20,13 +20,14 @@ public class AiState : MonoBehaviour
         }
     }
 
-    public void ChangeState(State newState)
+    public void ChangeState(State newState) //사ㅇ태 변경 
     {
         if(state != null)
         {
             state.Exit();
             Destroy(state);
         }
+
         state = newState;
         state.Enter();
     }

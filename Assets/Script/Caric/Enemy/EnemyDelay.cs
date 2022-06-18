@@ -21,7 +21,4 @@ public class EnemyDelay : State
     public override void Exit()
     {
     }
-    public override void SetAttackState(ENEMYTYPE enemyType)
-    {
-    }
 }

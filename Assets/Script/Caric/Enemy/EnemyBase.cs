@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : Caric
+public abstract class EnemyBase : Caric
 {
     [Header("Enemy Bullet Prefabs")]
     public GameObject obj_GroundElementBulet = null;
     public ENEMYTYPE enemyType;
     SpriteRenderer spriteRenderer = null;
+
 
     private void OnEnable()
     {
@@ -41,6 +42,8 @@ public class EnemyBase : Caric
         //EnemyLogic();
 
     }
+
+
 
     // public void EnemyLogic()
     // {

@@ -17,7 +17,4 @@ public class EnemyDie : State
     public override void Exit()
     {
     }
-    public override void SetAttackState(ENEMYTYPE enemyType)
-    {
-    }
 }

@@ -20,7 +20,4 @@ public class EnemyIdle : State
     {
     }
 
-    public override void SetAttackState(ENEMYTYPE enemyType)
-    {
-    }
 }

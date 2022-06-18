@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caric : MonoBehaviour
+public abstract class Caric : MonoBehaviour
 {
     public CARICSTATE CS = CARICSTATE.IDLE;
     public int Hp = 0;
@@ -17,6 +17,8 @@ public class Caric : MonoBehaviour
 
     protected State state;
     protected AiState aiState;
+
+    public State AttackState;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,7 @@ public class Caric : MonoBehaviour
         CS = CARICSTATE.DIE;
         DelayTime = J.WorldTime + time;
     }
+    public abstract State GetState(); //°Ù½ºÅ×ÀÌÆ® ¤Ç¤Ì¤Á
 
-    
+
 }
