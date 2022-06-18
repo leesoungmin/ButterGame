@@ -8,6 +8,7 @@ public class EnemyMove : State
     {
         aiState = GetComponent<AiState>();
         caric = GetComponent<Caric>();
+        caric.anim.Play("Walk");
     }
 
     public override void Tick()
@@ -19,7 +20,7 @@ public class EnemyMove : State
                 if (Mathf.Abs(Distance) <= 0.02f * caric.MoveSpeed)
                 {
                     //caric.GetComponent<Animator>().SetBool("isWalk", false);
-                    caric.SetDelay(3f);
+                    caric.anim.Play("Idle");
                 }
                 else
                 {

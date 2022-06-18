@@ -9,32 +9,36 @@ public abstract class Caric : MonoBehaviour
     public int Dmg = 0;
     public float MoveSpeed = 0;
     public float DelayTime = 0;
-    public float Direction = 0;
-    public Animator anim = null;
+    public float Direction = 0;   
+
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
     public Vector2 Target_Pos = Vector2.zero;
 
     protected State state;
     protected AiState aiState;
-
     public State AttackState;
 
-    // Start is called before the first frame update
-    void Start()
+    public Animator anim = null;
+    public SpriteRenderer spriteRenderer = null;
+    public Collider2D collider2D = null;
+    void Awake()
     {
-        aiState = GetComponent<AiState>();
         state = GetComponent<State>();
         aiState = GetComponent<AiState>();
-
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        
+    }
     void Update()
     {
         
     }
-
     public void Die()
     {
         anim.SetBool("isWalk", false);
@@ -47,19 +51,31 @@ public abstract class Caric : MonoBehaviour
         SetDelay(0.3f);
         Debug.Log("Hp : " + Hp);
     }
-
     public void SetDelay(float time)
     {
         CS = CARICSTATE.DELAY;
         DelayTime = J.WorldTime + time;
     }
-
     public void SetDieDelay(float time)
     {
         CS = CARICSTATE.DIE;
         DelayTime = J.WorldTime + time;
     }
-    public abstract State GetState(); //�ٽ�����Ʈ �Ǥ̤�
 
+    public abstract State GetState(); 
+
+    // 적 공격 마지막 이벤트
+    public void ChangeAttack()
+    {
+        //땅의 원소 공격 마지막
+        aiState.ChangeState(gameObject.AddComponent<EnemyIdle>());
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Border")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }

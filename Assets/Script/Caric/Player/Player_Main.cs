@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class Player_Main : Caric
 {
-    SpriteRenderer spriteRenderer = null;
     Rigidbody2D rigid = null;
     float x;
     public bool IsGround = false;
@@ -22,7 +21,6 @@ public partial class Player_Main : Caric
     {
         Init();
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }

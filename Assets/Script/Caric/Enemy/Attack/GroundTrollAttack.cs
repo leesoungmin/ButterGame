@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class GroundTrollAttack : State
 {
+
     public override void Enter()
     {
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+
+        caric.anim.Play("Attack");
     }
 
     public override void Tick()
@@ -15,4 +20,6 @@ public class GroundTrollAttack : State
     public override void Exit()
     {
     }
+
+
 }

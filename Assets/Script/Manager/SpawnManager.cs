@@ -26,9 +26,9 @@ public class SpawnManager : MonoBehaviour
 
     //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
-    public float CurSpawnTime = 0;
-
-    public int RandomEnemyType = 0;
+    public float curSpawnTime = 0;
+    public int randomEnemyType = 0;
+    public float maxSpawnTime = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,18 +36,19 @@ public class SpawnManager : MonoBehaviour
 
         EnemySpawnPoints = J.Find_Child_List("Point", GameObject.Find("EnemySpawnPoints"));
 
-        CurSpawnTime = J.WorldTime;
+        curSpawnTime = J.WorldTime;
     }
 
     // Update is called once per frame
     public void SpawnUpdate()
     {
+        
         EnemySpawn();
     }
 
     public void EnemySpawn()
     {
-        if (CurSpawnTime <= J.WorldTime)
+        if (curSpawnTime <= J.WorldTime)
         {
             EnemyCreate();
         }
@@ -56,9 +57,9 @@ public class SpawnManager : MonoBehaviour
 
     public void EnemyCreate()
     {
-
-        RandomEnemyType = Random.Range(0, Ground_Enemies.Length);
-        GameObject enemies = Instantiate(Ground_Enemies[RandomEnemyType]);
+        
+        randomEnemyType = Random.Range(0, Ground_Enemies.Length);
+        GameObject enemies = Instantiate(Ground_Enemies[randomEnemyType]);
         enemies.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
         enemies.transform.localRotation = Quaternion.identity;
 
@@ -68,7 +69,7 @@ public class SpawnManager : MonoBehaviour
         //goblin.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
         //goblin.transform.localRotation = Quaternion.identity;
 
-        CurSpawnTime = J.WorldTime + 4f;
+        curSpawnTime = J.WorldTime + 4f;
 
         //Debug.Log("Create Enemy !! " + goblin.name.ToUpper());
     }
