@@ -19,7 +19,7 @@ public class GroundElementBullet : MonoBehaviour
 
     void Fire()
     {
-        var col = Physics.OverlapSphere(transform.position, speed, 1 << (LayerMask.NameToLayer("Player")));
+        var col = Physics.OverlapSphere(transform.position, speed, 1 << 6);
         if(col.Length != 0)
         {
             GameObject target = col[0].gameObject;

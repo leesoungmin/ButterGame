@@ -18,7 +18,7 @@ public class BrickManager : MonoBehaviour
     private void Start()
     {
         brickParent = GameObject.Find("Bricks");
-        brickObj = Resources.Load<GameObject>("Prefab/Brick");
+        brickObj = Resources.Load<GameObject>("Prefab/Object/Brick");
         brickCreateTime = J.WorldTime;
     }
 

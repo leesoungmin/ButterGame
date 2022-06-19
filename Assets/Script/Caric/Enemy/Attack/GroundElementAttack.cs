@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class GroundElementAttack : State
 {
-    EnemyBase enemyBase;
+    GroundElement groundElement;
     public override void Enter()
     {
-        enemyBase = GetComponent<EnemyBase>();
+        Debug.Log("공격!");
 
+        groundElement = GetComponent<GroundElement>();
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+        
+        caric.anim.Play("Attack");
+        Fire();
     }
 
     public override void Tick()
     {
         
+        
     }
 
     public override void Exit()
     {
-        Fire();
-        aiState.ChangeState(gameObject.AddComponent<EnemyIdle>());
-        caric.anim.Play("Attack");
+        
     }
 
     void Fire()
     {
-        Instantiate(enemyBase.obj_GroundElementBulet, transform.position, Quaternion.identity);
+        Instantiate(groundElement.obj_GroundElementBulet, transform.position, Quaternion.identity);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(Random.Range(3,5));
     }
 }

@@ -7,6 +7,9 @@ public class EnemyDelay : State
 
     public override void Enter()
     {
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+
 
     }
 
@@ -14,7 +17,7 @@ public class EnemyDelay : State
     {
         if(caric.DelayTime < J.WorldTime)
         {
-            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+            aiState.ChangeState(gameObject.AddComponent<EnemyMove>());
         }
     }
 
