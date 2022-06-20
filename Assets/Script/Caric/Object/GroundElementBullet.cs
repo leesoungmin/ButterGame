@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class GroundElementBullet : MonoBehaviour
 {
-    float speed = 10f;
+    float speed = 4f;
+
+    Rigidbody2D rigidbody2D;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -19,7 +21,13 @@ public class GroundElementBullet : MonoBehaviour
 
     void Fire()
     {
-        var col = Physics.OverlapSphere(transform.position, speed, 1 << 6);
+        Vector3 vec = Vector3.down;
+        transform.Translate(vec * speed * Time.deltaTime);
+    }
+
+    void TargetFire()
+    {
+        var col = Physics.OverlapSphere(transform.position, 20, 1 << (LayerMask.NameToLayer("Player")));
         if(col.Length != 0)
         {
             GameObject target = col[0].gameObject;
@@ -39,6 +47,14 @@ public class GroundElementBullet : MonoBehaviour
         else
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Border")
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.22}
+  m_Size: {x: 0.025, y: 0.22}
   m_EdgeRadius: 0
 --- !u!114 &1053593426854466912
 MonoBehaviour:
@@ -148,7 +148,18 @@ MonoBehaviour:
   Dmg: 0
   MoveSpeed: 0
   DelayTime: 0
+  Direction: 0
+  bulletSpeed: 4
+  maxAttackTime: 0
+  curAttackTime: 0
+  Target_Pos: {x: 0, y: 0}
+  player: {fileID: 0}
+  enemyType: 0
+  AttackState: {fileID: 0}
   anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
+  rigidbody2D: {fileID: 0}
   IsGround: 0
   JumpForce: 900
 --- !u!50 &1053593426854466919

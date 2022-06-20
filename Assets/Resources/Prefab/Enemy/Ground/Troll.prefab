@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5730911773251088753}
   - component: {fileID: 5559617370707313683}
   - component: {fileID: 3822843228818721354}
-  - component: {fileID: 2736203165716933402}
   - component: {fileID: 3340436730562888606}
   - component: {fileID: 6797984820515434510}
+  - component: {fileID: 4392573298921859778}
   m_Layer: 7
   m_Name: Troll
   m_TagString: Enemy
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: 8793639957104055765, guid: 77c82516cfc6708468e5c9dc5638de1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,32 +127,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2736203165716933402
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7261309762008027421}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.29, y: 0.24}
-    newSize: {x: 0.29, y: 0.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.25}
-  m_EdgeRadius: 0
 --- !u!114 &3340436730562888606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,14 +145,18 @@ MonoBehaviour:
   MoveSpeed: 0
   DelayTime: 0
   Direction: 0
+  bulletSpeed: 4
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
+  player: {fileID: 0}
+  enemyType: 1
+  monsterType: 2
   AttackState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}
-  enemyType: 0
+  rigidbody2D: {fileID: 0}
 --- !u!114 &6797984820515434510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +169,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5d7446224e7ae488c2e8e0a3521fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &4392573298921859778
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261309762008027421}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.12

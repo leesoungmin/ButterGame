@@ -6,6 +6,8 @@ public class IngameManager : MonoBehaviour
 {
     INGAMESTEP IS = INGAMESTEP.READY;
     public GameObject Player = null;
+    public int playerKillCount = 0;
+    public bool isGameStop = true;
 
     // Start is called before the first frame update
     void Init()
@@ -36,7 +38,7 @@ public class IngameManager : MonoBehaviour
                 break;
 
             case INGAMESTEP.PLAYING:
-
+                isGameStop = false;
                 J.SpawnManager.SpawnUpdate();
 
                 break;

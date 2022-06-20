@@ -28,7 +28,9 @@ public partial class Player_Main : Caric
     // Update is called once per frame
     void Update()
     {
-        
+        if(J.IngameManager.isGameStop)
+            return;
+            
         KeyInput();
 
         switch(CS)
@@ -71,6 +73,8 @@ public partial class Player_Main : Caric
                 
                 break;
         }
+
+        
 
         Debug.Log("Now State !! : " + CS.ToString());
         
@@ -116,6 +120,7 @@ public partial class Player_Main : Caric
             CS = CARICSTATE.IDLE;
         }
 
+        
         this.transform.Translate(new Vector2(MoveSpeed * x * Time.deltaTime, 0));
     }
 

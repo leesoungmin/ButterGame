@@ -19,10 +19,14 @@ public class JudgmentSign
 public class JudgmentManager : MonoBehaviour
 {
     public Queue<JudgmentSign> JudgmentSignQueue;
+
+    AiState aiState;
     // Start is called before the first frame update
     void Start()
     {
         JudgmentSignQueue = new Queue<JudgmentSign>();
+
+        aiState = GetComponent<AiState>();
     }
 
     // Update is called once per frame
@@ -40,9 +44,8 @@ public class JudgmentManager : MonoBehaviour
             }
             else
             {
-                judgmentSign.Defender.Hit();
+                    judgmentSign.Defender.Hit();
             }
-
             //J.Log("Defender HP : " + Defender.Hp);
         }
     }

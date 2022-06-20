@@ -32,9 +32,4 @@ public class GroundElementAttack : State
     {
         Instantiate(groundElement.obj_GroundElementBulet, transform.position, Quaternion.identity);
     }
-
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(Random.Range(3,5));
-    }
 }

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2961724735104994224}
   - component: {fileID: 2961724735104994225}
   - component: {fileID: 2961724735104994238}
-  - component: {fileID: 2961724735104994228}
   - component: {fileID: 2961724735104994229}
   - component: {fileID: 2961724735104994226}
   - component: {fileID: 2961724735104994227}
+  - component: {fileID: 3759140421729176229}
   m_Layer: 7
   m_Name: Mole
   m_TagString: Enemy
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 8793639957104055765, guid: 115c25e1f2a85bf44858ec19c3f3e83c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,32 +106,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &2961724735104994228
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2961724735104994239}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.15}
-    newSize: {x: 0.3, y: 0.15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.15}
-  m_EdgeRadius: 0
 --- !u!50 &2961724735104994229
 Rigidbody2D:
   serializedVersion: 4
@@ -183,11 +157,31 @@ MonoBehaviour:
   MoveSpeed: 0
   DelayTime: 0
   Direction: 0
+  bulletSpeed: 4
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
+  player: {fileID: 0}
+  enemyType: 2
+  monsterType: 1
   AttackState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}
-  enemyType: 0
+  rigidbody2D: {fileID: 0}
+--- !u!58 &3759140421729176229
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961724735104994239}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.075

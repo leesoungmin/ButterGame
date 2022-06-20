@@ -22,16 +22,6 @@ public enum INGAMESTEP
     END,
 }
 
-public enum INGAMESTATE
-{ 
-    GROUNDSTATE,
-    WATERSTATE,
-    ICESTATE,
-    LIGHTNINGSTATE,
-    FIRESTATE,
-}
-
-
 public enum INGAMESTAGE
 {
     FIRSTSTAGE,
@@ -50,8 +40,10 @@ public enum ENEMYPROPERTY
 
 public enum ENEMYTYPE
 {
-    GROUNDELEMENTATTCK,
-    GROUNDTROLLATTACK,
+    GROUNDELEMENT,
+    TROLL,
+    MOLE,
+    GOLEM,
 }
 
 

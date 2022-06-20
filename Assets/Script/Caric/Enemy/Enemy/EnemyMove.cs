@@ -24,12 +24,20 @@ public class EnemyMove : State
                 }
                 else
                 {
+                    //움직임
+                    // Vector2 position = caric.rigidbody2D.position;
+                    // position.x =  position.x + caric.Direction * caric.MoveSpeed * Time.deltaTime; 
+                    // caric.rigidbody2D.MovePosition(position);
+                    // Debug.Log(position.x);
+
                     transform.Translate(transform.right * caric.Direction * caric.MoveSpeed * Time.deltaTime);
                 }
-
+                
+                //공격
                 if (caric.maxAttackTime <= caric.curAttackTime)
                 {
                     aiState.ChangeState(caric.GetState());
+                    caric.maxAttackTime = Random.Range(6f, 13f);
                     caric.curAttackTime = 0;
                 }
                 else

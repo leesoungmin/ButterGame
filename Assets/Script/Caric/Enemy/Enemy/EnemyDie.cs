@@ -8,6 +8,10 @@ public class EnemyDie : State
 
     public override void Enter()
     {
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+
+        caric.anim.Play("Die");
     }
 
     public override void Tick()

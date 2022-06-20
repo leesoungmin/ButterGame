@@ -388,6 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1546225802}
+  playerKillCount: 0
+  isGameStop: 1
 --- !u!1 &357708690
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,7 +983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dec728d8ff96bf46a9b3d32fd3dd734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameState: 0
 --- !u!1 &1038994753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,6 +1119,10 @@ PrefabInstance:
     - target: {fileID: 1053593426854466917, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053593426854466919, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
@@ -1649,6 +1654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42bc05af54ca8d4a9a4a00112cc3986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingameStage: 0
   Ground_Enemies:
   - {fileID: 5178203653979842920, guid: dd65fdd6097a3d44781b241e3dc01548, type: 3}
   - {fileID: 7261309762008027421, guid: a2e98ca3a4a711c4ab6e1aa852df24d9, type: 3}
@@ -1657,6 +1663,11 @@ MonoBehaviour:
   curSpawnTime: 0
   randomEnemyType: 0
   maxSpawnTime: 0
+  randomSpawnDelay: 0
+  maxTypeCount: 0700000003000000060000000500000004000000090000000500000006000000
+  curlowCount: 0
+  curmiddleCount: 0
+  curhighCount: 0
 --- !u!1 &1833081370
 GameObject:
   m_ObjectHideFlags: 0
