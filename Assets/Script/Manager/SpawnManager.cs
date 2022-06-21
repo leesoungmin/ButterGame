@@ -37,7 +37,6 @@ public class SpawnManager : MonoBehaviour
     public int curlowCount;
     public int curmiddleCount;
     public int curhighCount;
-    // Start is called before the first frame update
     void Start()
     {
         //Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
@@ -45,122 +44,28 @@ public class SpawnManager : MonoBehaviour
         EnemySpawnPoints = J.Find_Child_List("Point", GameObject.Find("EnemySpawnPoints"));
 
         curSpawnTime = J.WorldTime;
+
+        
+    }
+    public void FirstStageSpawn()
+    {
+        StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[0]));
+        StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[1]));
     }
 
-    // Update is called once per frame
-    public void SpawnUpdate()
+    IEnumerator EnemySpawn(GameObject enemy, int maxTypeCount)
     {
-        EnemySpawn();
-
-    }
-
-    public void EnemySpawn()
-    {
-        // if (curSpawnTime <= J.WorldTime)
-        // {
-        //     EnemyCreate();
-        // }
-
-        if (curSpawnTime <= J.WorldTime)
+        int curCount = 0;
+        while(curCount < maxTypeCount)
         {
-            switch (ingameStage)
-            {
-                case INGAMESTAGE.FIRSTSTAGE:
-                    FirstStageEnemyCreate();
-                    break;
-                case INGAMESTAGE.SECONDSTAGE:
-                    SecondStageEnemyCreate();
-                    break;
-                case INGAMESTAGE.THIRDSTAGE:
-                    ThirdStageEnemyCreate();
-                    break;
-            }
+            enemy = Instantiate(enemy);
+            enemy.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
+            enemy.transform.localRotation = Quaternion.identity;
+            curCount += 1;
+            yield return new WaitForSeconds(Random.Range(3f,7f));
         }
-
-
-    }
-
-    public void FirstStageEnemyCreate()
-    {
-        if (curlowCount <= maxTypeCount[0])
-        {
-            FirstEnemySpawn();
-        }
-        else if (curmiddleCount <= maxTypeCount[1])
-        {
-            SecondEnemySpawn();
-        }
-        else
-        {
-            //모든 적들이 소환되었을때(살아있을 수도 있음)
-            //끝나면 스테이지 변경
-            if (J.IngameManager.playerKillCount >= 13)
-            {
-                Debug.Log(ingameStage + "모든 적들이 소환되었습니다.");
-                ingameStage = INGAMESTAGE.SECONDSTAGE;
-                CountReset();
-            }
-
-        }
-    }
-    public void SecondStageEnemyCreate()
-    {
-        if (curlowCount <= maxTypeCount[2])
-        {
-
-            FirstEnemySpawn();
-        }
-        else if (curmiddleCount <= maxTypeCount[3])
-        {
-
-            SecondEnemySpawn();
-        }
-        else if (curhighCount <= maxTypeCount[4])
-        {
-            ThirdEnemySpawn();
-        }
-        else
-        {
-            //모든 적들이 소환되었을때(살아 있을 수도 있음)
-            //끝나면 스테이지 변경
-            if (J.IngameManager.playerKillCount >= 19)
-            {
-                Debug.Log(ingameStage + "모든 적들이 소환되었습니다.");
-                ingameStage = INGAMESTAGE.THIRDSTAGE;
-                CountReset();
-            }
-
-        }
-    }
-    public void ThirdStageEnemyCreate()
-    {
-        if (curlowCount <= maxTypeCount[5])
-        {
-            FirstEnemySpawn();
-
-        }
-        else if (curmiddleCount <= maxTypeCount[6])
-        {
-
-            SecondEnemySpawn();
-        }
-        else if (curhighCount <= maxTypeCount[7])
-        {
-
-            ThirdEnemySpawn();
-        }
-        else
-        {
-            //모든 적들이 소환되었을때(살아 있을 수도 있음)
-            //끝나면 스테이지 변경
-            if (J.IngameManager.playerKillCount >= 23)
-            {
-                Debug.Log(ingameStage + "모든 적들이 소환되었습니다.");
-                Debug.Log("모든 스테이지가 끝이 났습니다. 이제 보스 스테이지로 갑니다.");
-                CountReset();
-            }
-
-        }
+        
+        yield return null;
     }
 
     /*(public void EnemyCreate()
@@ -181,47 +86,8 @@ public class SpawnManager : MonoBehaviour
 
         //Debug.Log("Create Enemy !! " + goblin.name.ToUpper());
     }*/
-
-    // 1번째 적 스폰
-    public void FirstEnemySpawn()
-    {
-        GameObject enemy = Instantiate(Ground_Enemies[0]);
-        enemy.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
-        enemy.transform.localRotation = Quaternion.identity;
-
-        randomSpawnDelay = Random.Range(4, 8);
-        curlowCount += 1;
-        curSpawnTime = J.WorldTime + randomSpawnDelay;
-    }
-    // 2번째 적 스폰
-    public void SecondEnemySpawn()
-    {
-        GameObject enemy = Instantiate(Ground_Enemies[1]);
-        enemy.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
-        enemy.transform.localRotation = Quaternion.identity;
-
-        randomSpawnDelay = Random.Range(4, 8);
-        curmiddleCount += 1;
-        curSpawnTime = J.WorldTime + randomSpawnDelay;
-    }
-
-    // 3번째 적 스폰
-    public void ThirdEnemySpawn()
-    {
-        GameObject enemy = Instantiate(Ground_Enemies[2]);
-        enemy.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
-        enemy.transform.localRotation = Quaternion.identity;
-        randomSpawnDelay = Random.Range(4, 8);
-
-        curhighCount += 1;
-        curSpawnTime = J.WorldTime + randomSpawnDelay;
-    }
-
     void CountReset()
     {
-        curlowCount = 0;
-        curmiddleCount = 0;
-        curhighCount = 0;
         J.IngameManager.playerKillCount = 0;
     }
 

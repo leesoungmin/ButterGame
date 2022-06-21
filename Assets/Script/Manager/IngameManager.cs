@@ -24,34 +24,35 @@ public class IngameManager : MonoBehaviour
     void Update()
     {
         J.Update();
-    
-        switch(IS)
+
+        switch (IS)
         {
             case INGAMESTEP.READY:
-                
-                if(!J.BrickManager.BrickSpawn())
+
+                if (!J.BrickManager.BrickSpawn())
                 {
                     Debug.Log("Change Playing!!");
+                    J.SpawnManager.FirstStageSpawn();
                     IS = INGAMESTEP.PLAYING;
+
                 }
-                
+
                 break;
 
             case INGAMESTEP.PLAYING:
                 isGameStop = false;
-                J.SpawnManager.SpawnUpdate();
 
                 break;
 
             case INGAMESTEP.END:
-                
+
                 break;
         }
     }
 
     public void Spawn_Player()
     {
-        
+
     }
 
 }
