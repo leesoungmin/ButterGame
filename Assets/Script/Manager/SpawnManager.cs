@@ -34,9 +34,7 @@ public class SpawnManager : MonoBehaviour
 
     //적 카운트
     public int[] maxTypeCount;
-    public int curlowCount;
-    public int curmiddleCount;
-    public int curhighCount;
+
     void Start()
     {
         //Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
@@ -49,8 +47,22 @@ public class SpawnManager : MonoBehaviour
     }
     public void FirstStageSpawn()
     {
-        StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[0]));
-        StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[1]));
+        switch(ingameStage)
+        {
+            case INGAMESTAGE.FIRSTSTAGE:
+                StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[0]));
+                StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[1]));
+                if(J.IngameManager.playerKillCount >= 10)
+                {
+                    ingameStage = INGAMESTAGE.SECONDSTAGE;
+                }
+            break;
+            case INGAMESTAGE.SECONDSTAGE:
+            break;
+            case INGAMESTAGE.THIRDSTAGE:
+            break;
+        }
+        
     }
 
     IEnumerator EnemySpawn(GameObject enemy, int maxTypeCount)
@@ -58,9 +70,9 @@ public class SpawnManager : MonoBehaviour
         int curCount = 0;
         while(curCount < maxTypeCount)
         {
-            enemy = Instantiate(enemy);
-            enemy.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
-            enemy.transform.localRotation = Quaternion.identity;
+            var obj = Instantiate(enemy);
+            obj.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
+            obj.transform.localRotation = Quaternion.identity;
             curCount += 1;
             yield return new WaitForSeconds(Random.Range(3f,7f));
         }

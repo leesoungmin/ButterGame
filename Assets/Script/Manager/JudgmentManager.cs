@@ -44,7 +44,7 @@ public class JudgmentManager : MonoBehaviour
             }
             else
             {
-                    judgmentSign.Defender.Hit();
+                judgmentSign.Defender.Hit();
             }
             //J.Log("Defender HP : " + Defender.Hp);
         }

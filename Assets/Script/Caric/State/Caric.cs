@@ -11,6 +11,9 @@ public abstract class Caric : MonoBehaviour
     public float DelayTime = 0;
     public float Direction = 0;
     public float bulletSpeed = 4f;
+    public float x = 0;
+    public float JumpForce;
+    public bool IsGround = false;
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
@@ -23,6 +26,7 @@ public abstract class Caric : MonoBehaviour
     protected State state;
     protected AiState aiState;
     public State AttackState;
+    public State playerJumpState;
 
     public Animator anim = null;
     public SpriteRenderer spriteRenderer = null;
@@ -37,7 +41,7 @@ public abstract class Caric : MonoBehaviour
         collider2D = GetComponent<Collider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
 
-        SetEnemyType();
+        InitEnemyType();
 
         player = Resources.Load<GameObject>("Prefabs/Player/B_Player");
     }
@@ -54,7 +58,7 @@ public abstract class Caric : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
-            J.IngameManager.playerKillCount += 1;
+
             aiState.ChangeState(gameObject.AddComponent<EnemyDie>());
         }
     }
@@ -64,19 +68,12 @@ public abstract class Caric : MonoBehaviour
         {
             aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
         }
+        else if (gameObject.tag == "Player")
+        {
+            CS = CARICSTATE.HIT;
+        }
     }
-    public void SetDelay(float time)
-    {
-        CS = CARICSTATE.DELAY;
-        DelayTime = J.WorldTime + time;
-    }
-    public void SetDieDelay(float time)
-    {
-        CS = CARICSTATE.DIE;
-        DelayTime = J.WorldTime + time;
-    }
-
-    void SetEnemyType()
+    void InitEnemyType()
     {
         switch (enemyType)
         {
@@ -101,6 +98,12 @@ public abstract class Caric : MonoBehaviour
                 MoveSpeed = 0.7f;
                 break;
         }
+        if (gameObject.tag == "Player")
+        {
+            Hp = 100;
+            Dmg = 10;
+            MoveSpeed = 6;
+        }
     }
 
     public abstract State GetState();
@@ -111,15 +114,15 @@ public abstract class Caric : MonoBehaviour
         //땅의 원소 공격 마지막
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
     }
+    public void ChangePlayerIdle()
+    {
+        aiState.ChangeState(gameObject.AddComponent<PlayerIdle>());
+    }
 
     public void EnemyChanageDie()
     {
-        Destroy(gameObject);
-    }
-
-    public void PlayerKillPlus()
-    {
         J.IngameManager.playerKillCount += 1;
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
