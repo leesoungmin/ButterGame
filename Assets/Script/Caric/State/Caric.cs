@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Caric : MonoBehaviour
 {
+    public Caric Owner = null;
     public CARICSTATE CS = CARICSTATE.IDLE;
     public int Hp = 0;
     public int Dmg = 0;
@@ -17,7 +18,6 @@ public abstract class Caric : MonoBehaviour
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
-    public GameObject player;
     public Vector2 Target_Pos = Vector2.zero;
     public ENEMYTYPE enemyType;
     public MONSTERTYPE monsterType;
@@ -52,24 +52,13 @@ public abstract class Caric : MonoBehaviour
     {
 
     }
-    public void Die()
+    public virtual void Die()
     {
-        if (gameObject.tag == "Enemy")
-        {
-
-            aiState.ChangeState(gameObject.AddComponent<EnemyDie>());
-        }
+        
     }
-    public void Hit()
+    public virtual void Hit()
     {
-        if (gameObject.tag == "Enemy")
-        {
-            aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
-        }
-        else if (gameObject.tag == "Player")
-        {
-            CS = CARICSTATE.HIT;
-        }
+        
     }
     void InitEnemyType()
     {
@@ -121,7 +110,8 @@ public abstract class Caric : MonoBehaviour
 
     public void PlayerHit()
     {
-
+        Debug.Log("다시 원상복귀");
+        CS = CARICSTATE.IDLE;
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -86,10 +86,12 @@ public class Brick : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            Debug.Log("공격 들어가나요");
             if (attacker == null) return;
 
             foreach (var defender in defenders)
             {
+                Debug.Log("공격 성공");
                 new JudgmentSign(attacker, defender);
             }
 

@@ -40,6 +40,7 @@ public class JudgmentManager : MonoBehaviour
             
             if(judgmentSign.Defender.Hp <= 0)
             {
+                Debug.Log("죽음");
                 judgmentSign.Defender.Die();
             }
             else

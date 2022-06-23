@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundElementBullet : MonoBehaviour
+public class GroundElementBullet : Caric
 {
     float speed = 7.5f;
-    Player_Main player;
+    public Player_Main player;
     public GameObject[] enemies;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,14 @@ public class GroundElementBullet : MonoBehaviour
         if(other.gameObject.tag == "Border")
         {
             Destroy(gameObject);
+            Debug.Log("우히히히힣");
+
         }
     }
+
+    public override State GetState()
+    {
+        throw new System.NotImplementedException();
+    }
+
 }

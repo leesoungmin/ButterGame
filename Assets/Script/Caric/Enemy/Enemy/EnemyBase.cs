@@ -22,15 +22,24 @@ public abstract class EnemyBase : Caric
     protected void Start()
     {
         Init();
-
-        
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         
+    }
 
+    public override void Hit()
+    {
+        base.Hit();
+        aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        aiState.ChangeState(gameObject.AddComponent<EnemyDie>());
     }
 
 }

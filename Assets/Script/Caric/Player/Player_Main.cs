@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class Player_Main : Caric
 {
-
     void Init()
     {
         Hp = 100;
@@ -16,23 +15,24 @@ public partial class Player_Main : Caric
     {
         Init();
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(J.IngameManager.isGameStop)
+        if (J.IngameManager.isGameStop)
             return;
 
         KeyInput();
 
-        switch(CS)
+        switch (CS)
         {
             case CARICSTATE.IDLE:
-                
+
                 anim.SetBool("isWalk", false);
                 anim.SetBool("isJump", false);
-                    
+
                 break;
             case CARICSTATE.MOVE:
 
@@ -40,66 +40,83 @@ public partial class Player_Main : Caric
 
                 break;
             case CARICSTATE.JUMP:
-                
-                if(rigidbody2D.velocity.y < 0)
+
+                if (rigidbody2D.velocity.y < 0)
                 {
                     anim.SetBool("isWalk", false);
                     CS = CARICSTATE.FALL;
                 }
-                
+
                 break;
             case CARICSTATE.FALL:
-                
-                if(IsGround && rigidbody2D.velocity.y == 0)
+
+                if (IsGround && rigidbody2D.velocity.y == 0)
                 {
                     anim.SetBool("isWalk", false);
                     anim.SetBool("isJump", false);
                     CS = CARICSTATE.IDLE;
                 }
-                
                 break;
+
+            case CARICSTATE.HIT:
+                
+                
+
+                break;
+
             case CARICSTATE.DIE:
-                
-                
+
+
                 break;
         }
 
         Debug.Log("Now State !! : " + CS.ToString());
-        
+
     }
 
     public void KeyInput()
     {
         //PS = PLAYERSTATE.IDLE;
-        
+
         x = Input.GetAxis("Horizontal");
 
-        if(x != 0 && CS == CARICSTATE.IDLE)
+        if (x != 0 && CS == CARICSTATE.IDLE)
         {
             anim.SetBool("isWalk", true);
             CS = CARICSTATE.MOVE;
         }
-        if(Input.GetKeyDown(KeyCode.Space) && IsGround)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
             rigidbody2D.AddForce(Vector2.up * JumpForce);
-            
+
             anim.SetBool("isWalk", false);
             anim.SetBool("isJump", true);
-            
+
             IsGround = false;
             CS = CARICSTATE.JUMP;
         }
 
     }
 
+    public override void Die()
+    {
+        base.Die();
+    }
+    public override void Hit()
+    {
+        base.Hit();
+        anim.SetTrigger("isHit");
+        CS = CARICSTATE.HIT;
+    }
+
     public void Move()
     {
-        
-        if(x > 0)
+
+        if (x > 0)
         {
             spriteRenderer.flipX = false;
         }
-        else if(x < 0)
+        else if (x < 0)
         {
             spriteRenderer.flipX = true;
         }
@@ -114,9 +131,17 @@ public partial class Player_Main : Caric
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.transform.tag == "Ground")
+        if (other.transform.tag == "Ground")
         {
             IsGround = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy")
+        {
+            new JudgmentSign((other.GetComponent<Caric>().Owner == null) ? other.GetComponent<Caric>() : other.GetComponent<Caric>().Owner, this);
         }
     }
     public override State GetState()

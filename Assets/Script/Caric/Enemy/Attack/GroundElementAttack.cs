@@ -30,7 +30,7 @@ public class GroundElementAttack : State
 
     void Fire()
     {
-        Instantiate(groundElement.obj_GroundElementBulet, transform.position, Quaternion.identity);
-        
+        var obj = Instantiate(groundElement.obj_GroundElementBulet, transform.position, Quaternion.identity);
+        obj.GetComponent<Caric>().Owner = caric;
     }
 }
