@@ -27,10 +27,8 @@ public class SpawnManager : MonoBehaviour
 
     //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
-    public float curSpawnTime = 0;
     public int randomEnemyType = 0;
     public float maxSpawnTime = 0;
-    public int randomSpawnDelay = 0;
 
     //적 카운트
     public int[] maxTypeCount;
@@ -41,42 +39,58 @@ public class SpawnManager : MonoBehaviour
 
         EnemySpawnPoints = J.Find_Child_List("Point", GameObject.Find("EnemySpawnPoints"));
 
-        curSpawnTime = J.WorldTime;
-
-        
     }
     public void FirstStageSpawn()
     {
-        switch(ingameStage)
+        switch (ingameStage)
         {
             case INGAMESTAGE.FIRSTSTAGE:
                 StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[0]));
                 StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[1]));
-                if(J.IngameManager.playerKillCount >= 10)
+                if (J.IngameManager.playerKillCount >= 10)
                 {
+                    CountReset();
                     ingameStage = INGAMESTAGE.SECONDSTAGE;
                 }
-            break;
+                break;
             case INGAMESTAGE.SECONDSTAGE:
-            break;
+                StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[2]));
+                StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[3]));
+                StartCoroutine(EnemySpawn(Ground_Enemies[2], maxTypeCount[4]));
+
+                if (J.IngameManager.playerKillCount >= 15)
+                {
+                    CountReset();
+                    ingameStage = INGAMESTAGE.THIRDSTAGE;
+                }
+                break;
             case INGAMESTAGE.THIRDSTAGE:
-            break;
+                StartCoroutine(EnemySpawn(Ground_Enemies[0], maxTypeCount[5]));
+                StartCoroutine(EnemySpawn(Ground_Enemies[1], maxTypeCount[6]));
+                StartCoroutine(EnemySpawn(Ground_Enemies[2], maxTypeCount[7]));
+
+                if (J.IngameManager.playerKillCount >= 20)
+                {
+                    Debug.Log("게임 오버");
+                }
+                break;
         }
-        
+
     }
 
     IEnumerator EnemySpawn(GameObject enemy, int maxTypeCount)
     {
         int curCount = 0;
-        while(curCount < maxTypeCount)
+        while (curCount < maxTypeCount)
         {
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
             var obj = Instantiate(enemy);
             obj.transform.localPosition = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.localPosition;
             obj.transform.localRotation = Quaternion.identity;
             curCount += 1;
-            yield return new WaitForSeconds(Random.Range(3f,7f));
+            yield return new WaitForSeconds(Random.Range(5f, 9f));
         }
-        
+
         yield return null;
     }
 

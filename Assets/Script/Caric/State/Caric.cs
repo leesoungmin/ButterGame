@@ -17,9 +17,8 @@ public abstract class Caric : MonoBehaviour
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
-    public Vector2 Target_Pos = Vector2.zero;
-
     public GameObject player;
+    public Vector2 Target_Pos = Vector2.zero;
     public ENEMYTYPE enemyType;
     public MONSTERTYPE monsterType;
 
@@ -43,7 +42,6 @@ public abstract class Caric : MonoBehaviour
 
         InitEnemyType();
 
-        player = Resources.Load<GameObject>("Prefabs/Player/B_Player");
     }
 
     void Start()
@@ -114,15 +112,16 @@ public abstract class Caric : MonoBehaviour
         //땅의 원소 공격 마지막
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
     }
-    public void ChangePlayerIdle()
-    {
-        aiState.ChangeState(gameObject.AddComponent<PlayerIdle>());
-    }
 
     public void EnemyChanageDie()
     {
         J.IngameManager.playerKillCount += 1;
         Destroy(gameObject);
+    }
+
+    public void PlayerHit()
+    {
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -132,5 +131,6 @@ public abstract class Caric : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 }

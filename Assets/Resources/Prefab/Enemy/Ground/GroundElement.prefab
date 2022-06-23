@@ -158,12 +158,18 @@ MonoBehaviour:
   DelayTime: 0
   Direction: 0
   bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
   maxAttackTime: 0
   curAttackTime: 0
+  player: {fileID: 1053593426854466913, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
+  obj_GroundElement: {fileID: 5178203653979842920}
   Target_Pos: {x: 0, y: 0}
-  player: {fileID: 0}
   enemyType: 0
+  monsterType: 0
   AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}

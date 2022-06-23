@@ -34,7 +34,6 @@ public class IngameManager : MonoBehaviour
                     Debug.Log("Change Playing!!");
                     J.SpawnManager.FirstStageSpawn();
                     IS = INGAMESTEP.PLAYING;
-
                 }
 
                 break;

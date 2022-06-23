@@ -31,5 +31,6 @@ public class GroundElementAttack : State
     void Fire()
     {
         Instantiate(groundElement.obj_GroundElementBulet, transform.position, Quaternion.identity);
+        
     }
 }
