@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 0b607545fa167fc42b2ccc420b3bafd2
+guid: a892f99c41ff06e41bc227228cf1aeb1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6248741079362886434
-    second: Boss_0
+      213: -8373706231035966043
+    second: rock_falling_0
   - first:
-      213: 2287940250583960180
-    second: Boss_1
+      213: 4186064885346203478
+    second: rock_falling_1
+  - first:
+      213: 6821574995952018029
+    second: rock_falling_2
+  - first:
+      213: 3839633594602461019
+    second: rock_falling_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_0
+      name: rock_falling_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 13
-        width: 80
-        height: 50
+        x: 0
+        y: 1
+        width: 84
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed42f2778130849a0800000000000000
-      internalID: -6248741079362886434
+      spriteID: 5ad40a57c8e9acb80800000000000000
+      internalID: -8373706231035966043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_1
+      name: rock_falling_1
       rect:
         serializedVersion: 2
-        x: 122
-        y: 12
-        width: 53
-        height: 56
+        x: 128
+        y: 0
+        width: 88
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,8 +150,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47a006f298560cf10800000000000000
-      internalID: 2287940250583960180
+      spriteID: 657fbc1a5d3e71a30800000000000000
+      internalID: 4186064885346203478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock_falling_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 84
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62286a015a1bae50800000000000000
+      internalID: 6821574995952018029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rock_falling_3
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 0
+        width: 88
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b579fe9396e194530800000000000000
+      internalID: 3839633594602461019
       vertices: []
       indices: 
       edges: []

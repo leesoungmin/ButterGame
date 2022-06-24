@@ -54,11 +54,11 @@ public abstract class Caric : MonoBehaviour
     }
     public virtual void Die()
     {
-        
+
     }
     public virtual void Hit()
     {
-        
+
     }
     void InitEnemyType()
     {
@@ -105,6 +105,21 @@ public abstract class Caric : MonoBehaviour
     public void EnemyChanageDie()
     {
         J.IngameManager.playerKillCount += 1;
+        switch (enemyType)
+        {
+            case ENEMYTYPE.GROUNDELEMENT:
+                Destroy(gameObject);
+                break;
+                case ENEMYTYPE.TROLL:
+                anim.Play("Attack2");
+                break;
+                case ENEMYTYPE.MOLE:
+                break;
+        }
+    }
+
+    public void ObjectDestroy()
+    {
         Destroy(gameObject);
     }
 

@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class MoveRange
+{
+    public float xMin;
+    public float xMax;
+}
+
 public partial class Player_Main : Caric
 {
+    public MoveRange moveRange;
     void Init()
     {
         Hp = 100;
@@ -18,6 +26,8 @@ public partial class Player_Main : Caric
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +35,7 @@ public partial class Player_Main : Caric
             return;
 
         KeyInput();
+        ScreeChik();
 
         switch (CS)
         {
@@ -125,7 +136,29 @@ public partial class Player_Main : Caric
             CS = CARICSTATE.IDLE;
         }
 
-        this.transform.Translate(new Vector2(MoveSpeed * x * Time.deltaTime, 0));
+        //this.transform.Translate(new Vector2(MoveSpeed * x * Time.smoothDeltaTime, 0));
+        
+        var curPos = transform.position;
+        curPos += new Vector3(x,0,0) * MoveSpeed * Time.smoothDeltaTime;
+        curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
+        transform.position = curPos;
+
+    }
+
+    void RigidMove()
+    {
+        // Vector2 pos = rigidbody2D.position;
+        // pos.x = pos.x + MoveSpeed * x * Time.deltaTime;
+        // rigidbody2D.MovePosition(pos);
+    }
+
+
+    void ScreeChik()
+    {
+        Vector3 worlPos = Camera.main.WorldToViewportPoint(this.transform.position);
+        if(worlPos.x < -8.3f) worlPos.x = -8.3f;
+        if(worlPos.x > 8f) worlPos.x  = 8f;
+        this.transform.position = Camera.main.ViewportToWorldPoint(worlPos);
     }
 
 
