@@ -15,6 +15,7 @@ public class BtnManager : MonoBehaviour
     public void OnClick_2Stage_Btn()
     {
         Debug.Log("2Stage¿­¸²");
+        SceneManager.LoadScene(2);
     }
     public void OnClick_3Stage_Btn()
     {
