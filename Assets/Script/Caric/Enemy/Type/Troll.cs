@@ -8,6 +8,4 @@ public class Troll : EnemyBase
     {
         return gameObject.AddComponent<GroundTrollAttack>();
     }
-
-
 }
