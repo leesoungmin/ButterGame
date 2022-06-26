@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.22}
+  m_Size: {x: 0.05, y: 0.22}
   m_EdgeRadius: 0
 --- !u!114 &1053593426854466912
 MonoBehaviour:
@@ -166,8 +166,8 @@ MonoBehaviour:
   collider2D: {fileID: 0}
   rigidbody2D: {fileID: 0}
   moveRange:
-    xMin: 0
-    xMax: 0
+    xMin: -8
+    xMax: 8
 --- !u!50 &1053593426854466919
 Rigidbody2D:
   serializedVersion: 4

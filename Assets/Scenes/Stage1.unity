@@ -242,14 +242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1053593426854466912, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
-      propertyPath: moveRange.xMax
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1053593426854466912, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
-      propertyPath: moveRange.xMin
-      value: -8
-      objectReference: {fileID: 0}
     - target: {fileID: 1053593426854466913, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
       propertyPath: m_Name
       value: B_Player
@@ -453,6 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IS: 0
+  SK: 0
   Player: {fileID: 0}
   playerKillCount: 0
   isGameStop: 1
@@ -1640,6 +1633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingameStage: 0
+  stageKind: 0
   GroundEnemies:
   - {fileID: 5178203653979842920, guid: dd65fdd6097a3d44781b241e3dc01548, type: 3}
   - {fileID: 7261309762008027421, guid: a2e98ca3a4a711c4ab6e1aa852df24d9, type: 3}

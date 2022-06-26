@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4254545164193486406}
   - component: {fileID: 8638608179712359782}
   - component: {fileID: 2527357738337251770}
+  - component: {fileID: 3481393533081941805}
   m_Layer: 0
   m_Name: RockFalling
   m_TagString: Bullet
@@ -95,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 7556707405688351957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c12e87c2f8816149b989623b3f1d532, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -141,3 +142,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3481393533081941805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556707405688351957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f94d76c950e1be448334a36165e0e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  CS: 0
+  Hp: 0
+  Dmg: 0
+  MoveSpeed: 0
+  DelayTime: 0
+  Direction: 0
+  bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
+  maxAttackTime: 0
+  curAttackTime: 0
+  Target_Pos: {x: 0, y: 0}
+  enemyType: 0
+  monsterType: 0
+  AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
+  rigidbody2D: {fileID: 0}

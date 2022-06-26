@@ -6,7 +6,6 @@ public class GroundElementBullet : Caric
 {
     float speed = 8f;
     public Player_Main player;
-    public GameObject[] enemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +28,10 @@ public class GroundElementBullet : Caric
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Border")
+        if(other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
             Debug.Log("우히히히힣");
-
         }
     }
 

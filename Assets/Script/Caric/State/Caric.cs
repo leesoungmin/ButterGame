@@ -15,6 +15,7 @@ public abstract class Caric : MonoBehaviour
     public float x = 0;
     public float JumpForce;
     public bool IsGround = false;
+    public bool isMoleinvcible = false;
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
@@ -107,13 +108,6 @@ public abstract class Caric : MonoBehaviour
             MoveSpeed = 6;
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Border")
-        {
-            Destroy(gameObject);
-        }
-    }
     public abstract State GetState();
 
 
@@ -139,10 +133,15 @@ public abstract class Caric : MonoBehaviour
         CS = CARICSTATE.IDLE;
     }
 
+    public void ObjDestroy()
+    {
+        Destroy(gameObject);
+    }
+
     public void MoleAttack2()
     {
         
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x,0.4f);
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x,0.9f);
         anim.Play("Attack2");
         
     }
@@ -152,8 +151,16 @@ public abstract class Caric : MonoBehaviour
         rigidbody2D.gravityScale = 0;
         rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         rigidbody2D.simulated = false;
+        isMoleinvcible = true;
+        Invoke("MoleReState", 5f);
     }
 
+    void MoleReState()
+    {
+        isMoleinvcible = false;
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x,1.8f);
+        aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+    }
  
 
 }

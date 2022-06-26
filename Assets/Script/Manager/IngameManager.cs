@@ -5,10 +5,15 @@ using UnityEngine;
 public class IngameManager : MonoBehaviour
 {
     public INGAMESTEP IS = INGAMESTEP.READY;
+    public STAGEKIND SK = STAGEKIND.GROUNDSTAGE;
     public GameObject Player = null;
     public int playerKillCount = 0;
     public bool isGameStop = true;
     public bool isBoss = false;
+
+
+    // public bool isGolem = false;
+    // public bool isGolem = false;
 
     // Start is called before the first frame update
     void Init()
@@ -40,27 +45,65 @@ public class IngameManager : MonoBehaviour
 
             case INGAMESTEP.PLAYING:
 
-                isGameStop = false;
-                
-                StartCoroutine(J.SpawnManager.StageCoroutine());
+                StageSpawn();
+
                 // if(!isGameStop)
                 // {
                 //     isGameStop = true;
                 //     StartCoroutine(J.SpawnManager.StageCoroutine());
                 // }
 
-                if (J.IngameManager.playerKillCount >= 15)
-                    {
-                        J.IngameManager.ResetKillCount();
-                        J.SpawnManager.ingameStage = INGAMESTAGE.SECONDSTAGE;
-                        J.SpawnManager.RoundEnd = true;
-                    }
-
                 break;
 
             case INGAMESTEP.END:
 
                 break;
+        }
+    }
+
+    void StageSpawn()
+    {
+        isGameStop = false;
+
+        switch (SK)
+        {
+            case STAGEKIND.GROUNDSTAGE:
+                StartCoroutine(J.SpawnManager.GroundStageCoroutine());
+                break;
+            case STAGEKIND.WATERSTAGE:
+
+                break;
+            case STAGEKIND.LIGHTNINGSTAGE:
+
+                break;
+            case STAGEKIND.FIRSTAGE:
+
+                break;
+        }
+
+        
+
+        if (J.IngameManager.playerKillCount >= 15)
+        {
+            J.IngameManager.ResetKillCount();
+            J.SpawnManager.ingameStage = INGAMESTAGE.SECONDSTAGE;
+            J.SpawnManager.RoundEnd = true;
+        }
+        else if (J.IngameManager.playerKillCount >= 20)
+        {
+            J.IngameManager.ResetKillCount();
+            J.SpawnManager.ingameStage = INGAMESTAGE.THIRDSTAGE;
+            J.SpawnManager.RoundEnd = true;
+        }
+        else if (J.IngameManager.playerKillCount >= 30)
+        {
+            J.IngameManager.ResetKillCount();
+            J.SpawnManager.ingameStage = INGAMESTAGE.BOSSSTAGE;
+            J.SpawnManager.RoundEnd = true;
+        }
+        else if (J.IngameManager.playerKillCount >= 1)
+        {
+            Debug.Log("게임 클리어");
         }
     }
 

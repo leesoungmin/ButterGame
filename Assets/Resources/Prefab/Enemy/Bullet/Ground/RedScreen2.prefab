@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9140170677817155780}
   - component: {fileID: 1810316785562032952}
   - component: {fileID: 5451651446269181227}
+  - component: {fileID: 8890936604515945269}
   m_Layer: 0
   m_Name: RedScreen2
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8890936604515945269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86607862647954230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ae3daf6bd378848bb9645103eb7cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
