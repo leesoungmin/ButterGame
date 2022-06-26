@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5934523540076879238}
   - component: {fileID: 1272033855882263460}
   - component: {fileID: 6604674051670240025}
+  - component: {fileID: 3844228218252678425}
   m_Layer: 0
   m_Name: LeftFist
   m_TagString: Bullet
@@ -141,3 +142,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3844228218252678425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957054172445880961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc9687583b351f4e897b95d92e07cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  CS: 0
+  Hp: 0
+  Dmg: 0
+  MoveSpeed: 0
+  DelayTime: 0
+  Direction: 0
+  bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
+  maxAttackTime: 0
+  curAttackTime: 0
+  Target_Pos: {x: 0, y: 0}
+  enemyType: 0
+  monsterType: 0
+  AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
+  rigidbody2D: {fileID: 0}

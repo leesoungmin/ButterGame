@@ -16,9 +16,11 @@ public class EnemyDie : State
 
     public override void Tick()
     {
+
     }
 
     public override void Exit()
     {
+        
     }
 }

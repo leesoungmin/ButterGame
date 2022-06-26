@@ -26,6 +26,7 @@ public class SpawnManager : MonoBehaviour
     // public MonsterInfo monsterInfo;
 
     public INGAMESTAGE ingameStage = INGAMESTAGE.FIRSTSTAGE;
+    public STAGEKIND stageKind = STAGEKIND.GROUNDSTAGE;
     public List<GameObject> GroundEnemies = new List<GameObject>();
     //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
@@ -45,7 +46,7 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    public IEnumerator StageCoroutine()
+    public IEnumerator GroundStageCoroutine()
     {
         if (RoundEnd)
         {
@@ -53,28 +54,34 @@ public class SpawnManager : MonoBehaviour
             {
                 case INGAMESTAGE.FIRSTSTAGE:
 
-                    Debug.Log("스테이지 시작");
+                    Debug.Log("땅 스테이지 시작");
 
                     RoundEnd = false;
 
-                    StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
-
-                    //StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
-                    //StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
 
                     //yield return StartCoroutine(EnemyDie(EntytyList, 15));
                     break;
                 case INGAMESTAGE.SECONDSTAGE:
 
-                    //RoundEnd = false;
-                    //StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
-                    //StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
-                    //StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[4]));
+                    RoundEnd = false;
+                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[4]));
 
                     break;
                 case INGAMESTAGE.THIRDSTAGE:
 
+                    RoundEnd = false;
+                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[5]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[6]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[7]));
                     break;
+                case INGAMESTAGE.BOSSSTAGE:
+                    StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
+
+                break;
             }
         }
 
