@@ -35,7 +35,7 @@ public partial class Player_Main : Caric
             return;
 
         KeyInput();
-        ScreeChik();
+        //ScreeChik();
 
         switch (CS)
         {
@@ -139,7 +139,7 @@ public partial class Player_Main : Caric
         //this.transform.Translate(new Vector2(MoveSpeed * x * Time.smoothDeltaTime, 0));
         
         var curPos = transform.position;
-        curPos += new Vector3(x,0,0) * MoveSpeed * Time.smoothDeltaTime;
+        curPos += new Vector3(x,0,0) * MoveSpeed * Time.deltaTime;
         curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
         transform.position = curPos;
 

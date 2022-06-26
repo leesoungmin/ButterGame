@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GroundElementBullet : Caric
 {
-    float speed = 7.5f;
+    float speed = 8f;
     public Player_Main player;
     public GameObject[] enemies;
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType(typeof(Player_Main)) as Player_Main;
+        Destroy(gameObject,1.5f);
     }
 
     // Update is called once per frame
