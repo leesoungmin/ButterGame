@@ -7,30 +7,62 @@ using UnityEngine.SceneManagement;
 public class BtnManager : MonoBehaviour
 {
     public GameObject Title_BG;
+    private int SceneNum;
+
     public void OnClick_1Stage_Btn()
     {
-        Debug.Log("1Stage열림");
-        SceneManager.LoadScene(1);
+        SceneNum = 1;
+        StartCoroutine(Stage_Move());
     }
+
     public void OnClick_2Stage_Btn()
     {
-        Debug.Log("2Stage열림");
-        SceneManager.LoadScene(2);
+        SceneNum = 2;
+        StartCoroutine(Stage_Move());
     }
     public void OnClick_3Stage_Btn()
     {
-        Debug.Log("3Stage열림");
-        SceneManager.LoadScene(3);
+        SceneNum = 3;
+        StartCoroutine(Stage_Move());
     }
 
     public void OnClick_4Stage_Btn()
     {
-        Debug.Log("4Stage열림");
-        SceneManager.LoadScene(4);
+        SceneNum = 4;
+        StartCoroutine(Stage_Move());
     }
 
     public void OnClickTabtoStart_Btn()
     {
         Title_BG.SetActive(false);
+    }
+
+    IEnumerator Stage_Move()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        switch (SceneNum)
+        {
+            case 1:
+                Debug.Log("1Stage열림");
+                SceneManager.LoadScene(1);
+                break;
+
+            case 2:
+                Debug.Log("2Stage열림");
+                SceneManager.LoadScene(2);
+                break;
+
+            case 3:
+                Debug.Log("3Stage열림");
+                SceneManager.LoadScene(3);
+                break;
+
+            case 4:
+                Debug.Log("4Stage열림");
+                SceneManager.LoadScene(4);
+                break;
+
+        }
     }
 }

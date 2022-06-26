@@ -30,7 +30,7 @@ public enum INGAMESTAGE
 }
 
 public enum ENEMYPROPERTY
-{ 
+{
     GROUND,
     WATER,
     ICE,
@@ -52,6 +52,5 @@ public enum ENEMYTYPE
 
 public partial class J : MonoBehaviour
 {
-    
 
 }
