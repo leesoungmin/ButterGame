@@ -27,6 +27,7 @@ public class SpawnManager : MonoBehaviour
 
     public INGAMESTAGE ingameStage = INGAMESTAGE.FIRSTSTAGE;
     public List<GameObject> GroundEnemies = new List<GameObject>();
+    public List<GameObject> WaterEnemies = new List<GameObject>();
     //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
     public int randomEnemyType = 0;
@@ -61,11 +62,9 @@ public class SpawnManager : MonoBehaviour
 
                     //StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
                     //StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
-
                     //yield return StartCoroutine(EnemyDie(EntytyList, 15));
                     break;
                 case INGAMESTAGE.SECONDSTAGE:
-
                     //RoundEnd = false;
                     //StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
                     //StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
@@ -84,7 +83,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator EnemySpawn(GameObject enemy, int maxTypeCount)
     {
-        int curCount = 0;
+        int curCount = 0; 
         while (curCount < maxTypeCount)
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));

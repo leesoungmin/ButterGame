@@ -44,6 +44,9 @@ public enum ENEMYTYPE
     TROLL,
     MOLE,
     GOLEM,
+    WATERELEMENT,
+    FROG,
+    SLIME,
 }
 
 

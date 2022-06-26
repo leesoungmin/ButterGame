@@ -8,7 +8,7 @@ public class GroundElementAttack : State
     public override void Enter()
     {
         Debug.Log("공격!");
-
+        
         groundElement = GetComponent<GroundElement>();
         aiState = GetComponent<AiState>();
         caric = GetComponent<Caric>();

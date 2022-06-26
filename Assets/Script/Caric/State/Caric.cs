@@ -84,6 +84,21 @@ public abstract class Caric : MonoBehaviour
                 Dmg = 10;
                 MoveSpeed = 0.7f;
                 break;
+            case ENEMYTYPE.WATERELEMENT:
+                Hp = 20;
+                Dmg = 5;
+                MoveSpeed = 1.5f;
+                break;
+            case ENEMYTYPE.FROG:
+                Hp = 20; 
+                Dmg = 5;
+                MoveSpeed = 1.5f;
+                break;
+            case ENEMYTYPE.SLIME:
+                Hp = 20;
+                Dmg = 5;
+                MoveSpeed = 1.5f;
+                break;
         }
         if (gameObject.tag == "Player")
         {

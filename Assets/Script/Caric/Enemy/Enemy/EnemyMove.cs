@@ -40,7 +40,7 @@ public class EnemyMove : State
                     caric.maxAttackTime = Random.Range(3f, 8f);
                     //보스는 따로
                     caric.curAttackTime = 0;
-                }
+                } 
                 else
                 {
                     caric.curAttackTime += Time.deltaTime;

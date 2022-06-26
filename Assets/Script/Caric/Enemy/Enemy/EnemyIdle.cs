@@ -9,7 +9,7 @@ public class EnemyIdle : State
         aiState = GetComponent<AiState>();
         caric = GetComponent<Caric>();
 
-        caric.anim.Play("Idle");
+        caric.anim.Play("Idle"); 
         Invoke("ChangeStateScan", 4f);
 
         Debug.Log("평범한 상태");

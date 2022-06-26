@@ -20,11 +20,13 @@ public class BtnManager : MonoBehaviour
     public void OnClick_3Stage_Btn()
     {
         Debug.Log("3Stage열림");
+        SceneManager.LoadScene(3);
     }
 
     public void OnClick_4Stage_Btn()
     {
         Debug.Log("4Stage열림");
+        SceneManager.LoadScene(4);
     }
 
     public void OnClickTabtoStart_Btn()

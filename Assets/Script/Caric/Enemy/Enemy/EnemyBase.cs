@@ -13,12 +13,10 @@ public abstract class EnemyBase : Caric
     // Start is called before the first frame update
     void Init()
     {
-        
         aiState = GetComponent<AiState>();
-
+        
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
-
-    }
+    } 
 
     protected void Start()
     {
