@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5747769966127298134}
   - component: {fileID: 6431302986729767186}
   - component: {fileID: 7279387141146221403}
+  - component: {fileID: 3975766626076918468}
   m_Layer: 0
   m_Name: DownRightFist
   m_TagString: Bullet
@@ -141,3 +142,37 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3975766626076918468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066984995268834108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc9687583b351f4e897b95d92e07cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  CS: 0
+  Hp: 0
+  Dmg: 0
+  MoveSpeed: 0
+  DelayTime: 0
+  Direction: 0
+  bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
+  maxAttackTime: 0
+  curAttackTime: 0
+  Target_Pos: {x: 0, y: 0}
+  enemyType: 0
+  monsterType: 0
+  AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
+  rigidbody2D: {fileID: 0}

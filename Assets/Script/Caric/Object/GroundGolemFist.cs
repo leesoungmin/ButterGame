@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundGolemBullet : Caric
+public class GroundGolemFist : Caric
 {
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject,2f);
+        
     }
 
     // Update is called once per frame
@@ -16,16 +16,13 @@ public class GroundGolemBullet : Caric
         
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void FistDestroy()
     {
-        if(other.gameObject.tag == "Player")
-        {
-            anim.Play("GolemBulletHit");
-        }
+        Destroy(gameObject);
     }
+
     public override State GetState()
     {
         throw new System.NotImplementedException();
     }
-    
 }

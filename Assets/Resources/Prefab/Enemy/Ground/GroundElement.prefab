@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8697a20728f4a4b87a9f9573d1d17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
   CS: 0
   Hp: 0
   Dmg: 0
@@ -163,8 +164,6 @@ MonoBehaviour:
   IsGround: 0
   maxAttackTime: 0
   curAttackTime: 0
-  player: {fileID: 1053593426854466913, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
-  obj_GroundElement: {fileID: 5178203653979842920}
   Target_Pos: {x: 0, y: 0}
   enemyType: 0
   monsterType: 0
@@ -174,7 +173,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}
   rigidbody2D: {fileID: 0}
-  obj_GroundElementBulet: {fileID: 4396232428746791641, guid: 06c75961e46ee984ca47a295301b363d, type: 3}
+  obj_GroundElementBullet: {fileID: 4396232428746791641, guid: 06c75961e46ee984ca47a295301b363d, type: 3}
 --- !u!58 &7316832254323878760
 CircleCollider2D:
   m_ObjectHideFlags: 0
