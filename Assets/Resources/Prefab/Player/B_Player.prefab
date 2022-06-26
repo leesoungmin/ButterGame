@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1053593426854466915}
   - component: {fileID: 1053593426854466912}
   - component: {fileID: 1053593426854466919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: B_Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce452bf5bdbbe1a47b1dc085dc9cae08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
   CS: 0
   Hp: 0
   Dmg: 0
@@ -150,18 +151,23 @@ MonoBehaviour:
   DelayTime: 0
   Direction: 0
   bulletSpeed: 4
+  x: 0
+  JumpForce: 900
+  IsGround: 0
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
-  player: {fileID: 0}
   enemyType: 0
+  monsterType: 0
   AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}
   rigidbody2D: {fileID: 0}
-  IsGround: 0
-  JumpForce: 900
+  moveRange:
+    xMin: 0
+    xMax: 0
 --- !u!50 &1053593426854466919
 Rigidbody2D:
   serializedVersion: 4

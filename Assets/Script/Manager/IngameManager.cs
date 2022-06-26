@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class IngameManager : MonoBehaviour
 {
-    INGAMESTEP IS = INGAMESTEP.READY;
+    public INGAMESTEP IS = INGAMESTEP.READY;
     public GameObject Player = null;
     public int playerKillCount = 0;
     public bool isGameStop = true;
+    public bool isBoss = false;
 
     // Start is called before the first frame update
     void Init()
@@ -32,14 +33,28 @@ public class IngameManager : MonoBehaviour
                 if (!J.BrickManager.BrickSpawn())
                 {
                     Debug.Log("Change Playing!!");
-                    J.SpawnManager.FirstStageSpawn();
                     IS = INGAMESTEP.PLAYING;
                 }
 
                 break;
 
             case INGAMESTEP.PLAYING:
+
                 isGameStop = false;
+                
+                StartCoroutine(J.SpawnManager.StageCoroutine());
+                // if(!isGameStop)
+                // {
+                //     isGameStop = true;
+                //     StartCoroutine(J.SpawnManager.StageCoroutine());
+                // }
+
+                if (J.IngameManager.playerKillCount >= 15)
+                    {
+                        J.IngameManager.ResetKillCount();
+                        J.SpawnManager.ingameStage = INGAMESTAGE.SECONDSTAGE;
+                        J.SpawnManager.RoundEnd = true;
+                    }
 
                 break;
 
@@ -54,4 +69,8 @@ public class IngameManager : MonoBehaviour
 
     }
 
+    public void ResetKillCount()
+    {
+        playerKillCount = 0;
+    }
 }

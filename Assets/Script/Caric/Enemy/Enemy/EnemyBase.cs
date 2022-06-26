@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyBase : Caric
 {
+    public bool IsDestroy => Hp <= 0;
     private void OnEnable()
     {
         maxAttackTime = Random.Range(6f, 13f);

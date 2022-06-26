@@ -37,7 +37,8 @@ public class EnemyMove : State
                 if (caric.maxAttackTime <= caric.curAttackTime)
                 {
                     aiState.ChangeState(caric.GetState());
-                    caric.maxAttackTime = Random.Range(6f, 13f);
+                    caric.maxAttackTime = Random.Range(3f, 8f);
+                    //보스는 따로
                     caric.curAttackTime = 0;
                 }
                 else

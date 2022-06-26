@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff547159b4a5c347bbbfecf0e7b22be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
   CS: 0
   Hp: 0
   Dmg: 0
@@ -158,13 +159,16 @@ MonoBehaviour:
   DelayTime: 0
   Direction: 0
   bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
-  player: {fileID: 0}
   enemyType: 2
   monsterType: 1
   AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}

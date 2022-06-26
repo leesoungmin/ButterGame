@@ -21,5 +21,13 @@ public class GroundTrollAttack : State
     {
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Ground" || other.gameObject.tag == "Player")
+        {
+            caric.anim.Play("Attack2");
+        }
+
+    }
 
 }

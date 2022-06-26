@@ -92,8 +92,17 @@ public abstract class Caric : MonoBehaviour
             MoveSpeed = 6;
         }
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Border")
+        {
+            Destroy(gameObject);
+        }
+    }
     public abstract State GetState();
+
+
+    //적 이벤트 함수
 
     // 적 공격 마지막 이벤트
     public void ChangeIdle()
@@ -105,21 +114,7 @@ public abstract class Caric : MonoBehaviour
     public void EnemyChanageDie()
     {
         J.IngameManager.playerKillCount += 1;
-        switch (enemyType)
-        {
-            case ENEMYTYPE.GROUNDELEMENT:
-                Destroy(gameObject);
-                break;
-                case ENEMYTYPE.TROLL:
-                anim.Play("Attack2");
-                break;
-                case ENEMYTYPE.MOLE:
-                break;
-        }
-    }
-
-    public void ObjectDestroy()
-    {
+        J.SpawnManager.GroundEnemies.Remove(gameObject);
         Destroy(gameObject);
     }
 
@@ -129,13 +124,21 @@ public abstract class Caric : MonoBehaviour
         CS = CARICSTATE.IDLE;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void MoleAttack2()
     {
-        if (other.gameObject.tag == "Border")
-        {
-            Destroy(gameObject);
-        }
+        
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x,0.4f);
+        anim.Play("Attack2");
+        
     }
 
+    public void MoleAttackGra()
+    {
+        rigidbody2D.gravityScale = 0;
+        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        rigidbody2D.simulated = false;
+    }
+
+ 
 
 }
