@@ -32,10 +32,13 @@ public abstract class EnemyBase : Caric
     public override void Hit()
     {
         if(isMoleinvcible)
+        {
             return;
-            
+        }
+
         base.Hit();
         aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
+  
     }
 
     public override void Die()

@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396232428746791641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.997049, y: 1.8969494, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -154,8 +154,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f6fa12dcdab98408bcb11fd5858fc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 5178203653979842920, guid: dd65fdd6097a3d44781b241e3dc01548, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  Owner: {fileID: 0}
+  CS: 0
+  Hp: 0
+  Dmg: 0
+  MoveSpeed: 0
+  DelayTime: 0
+  Direction: 0
+  bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
+  isMoleinvcible: 0
+  playerMain: {fileID: 0}
+  maxAttackTime: 0
+  curAttackTime: 0
+  Target_Pos: {x: 0, y: 0}
+  enemyType: 0
+  monsterType: 0
+  AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collider2D: {fileID: 0}
+  rigidbody2D: {fileID: 0}
+  player: {fileID: 0}
