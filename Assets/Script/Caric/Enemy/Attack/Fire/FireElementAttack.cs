@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class FireElementAttack : State
 {
+    FireElement fireElement;
     // start 초기화 용도
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("공격!");
+
+        fireElement = GetComponent<FireElement>();
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+
+        caric.anim.Play("Attack");
+        Fire();
     }
 
     // update 역할
     public override void Tick()
     {
-        throw new System.NotImplementedException();
     }
     // class에서 나갈 때 쓰임. (거의 안 쓰임)
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+    }
+    void Fire()
+    {
+        var obj = Instantiate(fireElement.obj_FireElementBullet, transform.position, Quaternion.identity);
+        obj.GetComponent<Caric>().Owner = caric;
     }
 }

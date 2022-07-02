@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FireElement : EnemyBase
 {
-    public GameObject waterElementBullet = null;
+    [Header("Enemy Bullet Prefabs")]
+    public GameObject obj_FireElementBullet = null;
     public override State GetState()
     {
-        return gameObject.AddComponent<WaterElementAttack>();
+        return gameObject.AddComponent<FireElementAttack>();
     }
 }

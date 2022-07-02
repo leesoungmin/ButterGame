@@ -19,13 +19,10 @@ public class WaterElementAttack : State
 
     public override void Tick()
     {
-        
-        
     }
 
     public override void Exit()
     {
-        
     }
 
     void Fire()
