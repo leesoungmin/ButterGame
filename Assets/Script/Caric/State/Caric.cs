@@ -104,6 +104,11 @@ public abstract class Caric : MonoBehaviour
                 Dmg = 5;
                 MoveSpeed = 1.5f;
                 break;
+            case ENEMYTYPE.FIREELEMENT:
+                Hp = 20;
+                Dmg = 5;
+                MoveSpeed = 1.5f;
+                break;
         }
         if (gameObject.tag == "Player")
         {
