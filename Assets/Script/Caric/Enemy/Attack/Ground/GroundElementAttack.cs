@@ -20,7 +20,6 @@ public class GroundElementAttack : State
     public override void Tick()
     {
         
-        
     }
 
     public override void Exit()
