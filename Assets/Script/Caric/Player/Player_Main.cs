@@ -168,11 +168,15 @@ public partial class Player_Main : Caric
         {
             IsGround = true;
         }
+        else if(other.gameObject.tag == "Enemy")
+        {
+            new JudgmentSign((other.gameObject.GetComponent<Caric>().Owner == null)? other.gameObject.GetComponent<Caric>() : other.gameObject.GetComponent<Caric>().Owner, this);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Bullet")
         {
             new JudgmentSign((other.GetComponent<Caric>().Owner == null) ? other.GetComponent<Caric>() : other.GetComponent<Caric>().Owner, this);
         }

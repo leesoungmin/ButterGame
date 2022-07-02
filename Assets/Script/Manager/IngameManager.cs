@@ -64,22 +64,8 @@ public class IngameManager : MonoBehaviour
     void StageSpawn()
     {
         isGameStop = false;
+        StartCoroutine(J.SpawnManager.StageCoroutine());
 
-        switch (SK)
-        {
-            case STAGEKIND.GROUNDSTAGE:
-                StartCoroutine(J.SpawnManager.GroundStageCoroutine());
-                break;
-            case STAGEKIND.WATERSTAGE:
-
-                break;
-            case STAGEKIND.LIGHTNINGSTAGE:
-
-                break;
-            case STAGEKIND.FIRSTAGE:
-
-                break;
-        }
 
         
 

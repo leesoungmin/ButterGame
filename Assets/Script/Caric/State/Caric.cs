@@ -16,6 +16,7 @@ public abstract class Caric : MonoBehaviour
     public float JumpForce;
     public bool IsGround = false;
     public bool isMoleinvcible = false;
+    public Player_Main playerMain = null;
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
@@ -32,6 +33,8 @@ public abstract class Caric : MonoBehaviour
     public SpriteRenderer spriteRenderer = null;
     public Collider2D collider2D = null;
     public Rigidbody2D rigidbody2D = null;
+
+    
     void Awake()
     {
         state = GetComponent<State>();
@@ -40,6 +43,7 @@ public abstract class Caric : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        playerMain = FindObjectOfType(typeof(Player_Main)) as Player_Main;
 
         InitEnemyType();
 
@@ -140,25 +144,22 @@ public abstract class Caric : MonoBehaviour
 
     public void MoleAttack2()
     {
-        
         gameObject.transform.position = new Vector2(gameObject.transform.position.x,0.9f);
         anim.Play("Attack2");
-        
+        isMoleinvcible = true;   
     }
 
     public void MoleAttackGra()
     {
-        rigidbody2D.gravityScale = 0;
-        rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
-        rigidbody2D.simulated = false;
-        isMoleinvcible = true;
-        Invoke("MoleReState", 5f);
+        rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        Invoke("MoleReState", Random.Range(5f,10f));
     }
 
     void MoleReState()
     {
         isMoleinvcible = false;
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x,1.8f);
+        rigidbody2D.constraints = ~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY;
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x,2f);
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
     }
  

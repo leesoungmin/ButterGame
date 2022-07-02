@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    public IEnumerator GroundStageCoroutine()
+    public IEnumerator StageCoroutine()
     {
         if (RoundEnd)
         {
