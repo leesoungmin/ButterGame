@@ -17,6 +17,7 @@ public partial class Player_Main : Caric
         Hp = 100;
         Dmg = 10;
         MoveSpeed = 6;
+        defaultSpeed = MoveSpeed;
     }
     // Start is called before the first frame update
     void Start()
@@ -139,9 +140,27 @@ public partial class Player_Main : Caric
         //this.transform.Translate(new Vector2(MoveSpeed * x * Time.smoothDeltaTime, 0));
         
         var curPos = transform.position;
-        curPos += new Vector3(x,0,0) * MoveSpeed * Time.deltaTime;
+        curPos += new Vector3(x,0,0) * defaultSpeed * Time.deltaTime;
         curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
         transform.position = curPos;
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isDash = true;
+        }
+
+        if(dashTime <= 0)
+        {
+            defaultSpeed = MoveSpeed;
+            if(isDash)
+                dashTime = defaultTime;
+        }
+        else
+        {
+            dashTime -= Time.deltaTime;
+            defaultSpeed = dashSpeed;
+        }
+        isDash = false;
 
     }
 
@@ -176,7 +195,7 @@ public partial class Player_Main : Caric
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet")
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy") 
         {
             new JudgmentSign((other.GetComponent<Caric>().Owner == null) ? other.GetComponent<Caric>() : other.GetComponent<Caric>().Owner, this);
         }

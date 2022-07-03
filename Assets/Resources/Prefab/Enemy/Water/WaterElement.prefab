@@ -140,7 +140,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.05}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
 --- !u!114 &6815860222313462185
@@ -179,7 +179,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}
   rigidbody2D: {fileID: 0}
-  waterElementBullet: {fileID: 0}
+  waterElementBullet: {fileID: 4466165846722363997, guid: ff8c6c1702845a34f9590a7f5b44ee51, type: 3}
 --- !u!114 &8787826169113986145
 MonoBehaviour:
   m_ObjectHideFlags: 0

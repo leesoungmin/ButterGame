@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class FrogAttack : State
 {
-    // start 초기화 용도
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+        aiState = GetComponent<AiState>();
+        caric = GetComponent<Caric>();
+
+        caric.anim.Play("Attack");
     }
 
-    // update 역할
     public override void Tick()
     {
-        throw new System.NotImplementedException();
     }
-    // class에서 나갈 때 쓰임. (거의 안 쓰임)
+
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

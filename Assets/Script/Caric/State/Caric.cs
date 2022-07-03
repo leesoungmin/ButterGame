@@ -18,6 +18,12 @@ public abstract class Caric : MonoBehaviour
     public bool isMoleinvcible = false;
     public Player_Main playerMain = null;
 
+    public bool isDash = false;
+    public float defaultSpeed = 0;
+    public float dashSpeed = 0;
+    public float dashTime = 0;
+    public float defaultTime = 7f;
+
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
     public Vector2 Target_Pos = Vector2.zero;
