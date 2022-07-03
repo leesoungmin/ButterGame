@@ -6,6 +6,7 @@ public class WaterElementBullet : Caric
 {
    float speed = 8f;
     public Player_Main player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +23,14 @@ public class WaterElementBullet : Caric
     void Fire()
     {
          Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
-         Vector3 dirVec = player.transform.position - transform.position;
-         var rot = Quaternion.LookRotation(player.transform.position);
-         transform.rotation = Quaternion.Slerp(transform.rotation, rot, 5 * Time.deltaTime);
-         rigid.AddForce(dirVec.normalized * speed * Time.deltaTime, ForceMode2D.Impulse);
+        //float angle = Mathf.Atan2(dirVec.y, dirVec.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.Euler(0,0,angle);
+        //transform.position += dirVec * speed * Time.deltaTime;
+        Vector3 dirVec = player.transform.position - transform.position;
+        rigid.AddForce(dirVec.normalized * speed * Time.deltaTime, ForceMode2D.Impulse);
+        
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
