@@ -107,7 +107,12 @@ public abstract class Caric : MonoBehaviour
             case ENEMYTYPE.FIREELEMENT:
                 Hp = 20;
                 Dmg = 5;
-                MoveSpeed = 1.5f;
+                MoveSpeed = 2f;
+                break;
+            case ENEMYTYPE.FIREWIZARD:
+                Hp = 20;
+                Dmg = 10;
+                MoveSpeed = 1f;
                 break;
         }
         if (gameObject.tag == "Player")

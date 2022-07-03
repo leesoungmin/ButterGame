@@ -57,6 +57,7 @@ public enum ENEMYTYPE
     FROG,
     SLIME,
     FIREELEMENT,
+    FIREWIZARD,
 }
 
 
