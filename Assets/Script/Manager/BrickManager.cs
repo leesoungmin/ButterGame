@@ -14,11 +14,24 @@ public class BrickManager : MonoBehaviour
     public GameObject brickParent = null;
     public List<Brick> brickList = new List<Brick>();
     public GameObject brickObj = null;
+    public STAGEKIND SK;
 
     private void Start()
     {
         brickParent = GameObject.Find("Bricks");
-        brickObj = Resources.Load<GameObject>("Prefab/Object/Brick");
+        switch(SK)
+        {
+            case STAGEKIND.GROUNDSTAGE:
+                brickObj = Resources.Load<GameObject>("Prefab/Object/GroundBrick"); 
+            break;
+            case STAGEKIND.WATERSTAGE:
+                brickObj = Resources.Load<GameObject>("Prefab/Object/WaterBrick"); 
+            break;
+            case STAGEKIND.FIRESTAGE:
+                brickObj = Resources.Load<GameObject>("Prefab/Object/FireBrick"); 
+            break;
+        }
+        
         brickCreateTime = J.WorldTime;
     }
 

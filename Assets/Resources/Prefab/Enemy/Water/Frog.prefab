@@ -169,10 +169,15 @@ MonoBehaviour:
   IsGround: 0
   isMoleinvcible: 0
   playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 7
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
-  enemyType: 5
+  enemyType: 6
   monsterType: 2
   AttackState: {fileID: 0}
   playerJumpState: {fileID: 0}

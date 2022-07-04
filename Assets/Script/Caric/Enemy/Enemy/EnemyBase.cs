@@ -37,7 +37,25 @@ public abstract class EnemyBase : Caric
         }
 
         base.Hit();
-        aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
+
+        switch(enemyType)
+        {
+            case ENEMYTYPE.GOLEM:
+            Instantiate(hitEffectPrefab,gameObject.transform.position, Quaternion.identity);
+            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+            break;
+            case ENEMYTYPE.MERMAID:
+            Instantiate(hitEffectPrefab,gameObject.transform.position, Quaternion.identity);
+            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+            break;
+            case ENEMYTYPE.CERBERUS:
+            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+            break;
+            default:
+            aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
+            break;
+        }
+
   
     }
 
