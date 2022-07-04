@@ -58,10 +58,10 @@ public class SpawnManager : MonoBehaviour
 
                     RoundEnd = false;
 
-                    StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
+                    // StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
 
-                    // StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
-                    // StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
+                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
 
                     //yield return StartCoroutine(EnemyDie(EntytyList, 15));
                     break;
@@ -83,7 +83,7 @@ public class SpawnManager : MonoBehaviour
                 case INGAMESTAGE.BOSSSTAGE:
                     StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
 
-                break;
+                    break;
             }
         }
 

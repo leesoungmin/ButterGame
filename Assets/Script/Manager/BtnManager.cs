@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class BtnManager : MonoBehaviour
 {
     public GameObject Title_BG;
+    public GameObject Setting_PopUp;
+
     private int SceneNum;
 
     public void OnClick_1Stage_Btn()
@@ -36,7 +38,20 @@ public class BtnManager : MonoBehaviour
     {
         Title_BG.SetActive(false);
     }
-
+    public void OnClickSetting_Btn()
+    {
+        Time.timeScale = 0;
+        Setting_PopUp.SetActive(true);
+    }
+    public void OnClickReturn_Btn()
+    {
+        Time.timeScale = 1;
+        Setting_PopUp.SetActive(false);
+    }
+    public void OnClickQuit_Btn()
+    {
+        SceneManager.LoadScene(0);
+    }
     IEnumerator Stage_Move()
     {
         yield return new WaitForSeconds(0.5f);
