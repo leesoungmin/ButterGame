@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2628301880664975578}
   - component: {fileID: 4861803800377562830}
   - component: {fileID: 2190971626487497280}
-  - component: {fileID: 181838073121727035}
   - component: {fileID: 4242930819883270983}
   m_Layer: 0
   m_Name: Bullet
@@ -123,18 +122,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &181838073121727035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4466165846722363997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5d7446224e7ae488c2e8e0a3521fa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4242930819883270983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
   CS: 0
+  hitEffectPrefab: {fileID: 0}
   Hp: 0
   Dmg: 0
   MoveSpeed: 0
@@ -160,6 +148,11 @@ MonoBehaviour:
   IsGround: 0
   isMoleinvcible: 0
   playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 0.1
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}

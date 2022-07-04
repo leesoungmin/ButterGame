@@ -313,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 117547317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.3, z: 0}
-  m_LocalScale: {x: 1.13, y: 1.8, z: 1}
+  m_LocalScale: {x: 2, y: 1.8, z: 1}
   m_Children: []
   m_Father: {fileID: 750033621}
   m_RootOrder: 2
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   brickParent: {fileID: 0}
   brickList: []
   brickObj: {fileID: 0}
+  SK: 1
 --- !u!1 &1200788484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,17 +1723,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42bc05af54ca8d4a9a4a00112cc3986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingameStage: 1
+  ingameStage: 0
   stageKind: 1
   GroundEnemies:
   - {fileID: 9212183794301968624, guid: 487ab902846f9304dba03211d8af8970, type: 3}
   - {fileID: 8498546895229926565, guid: dd8798bb021cba14f8cf1a837191277c, type: 3}
   - {fileID: 3642215089638628701, guid: 9c1344644eab78d4f97995ce2056e043, type: 3}
+  - {fileID: 887405998767509374, guid: 2cf039d099f011842951188c4901f773, type: 3}
   EnemySpawnPoints: []
   randomEnemyType: 0
   maxSpawnTime: 0
   RoundEnd: 1
-  maxTypeCount: 0a000000050000000800000006000000060000000a0000000a0000000a00000001000000
+  maxTypeCount: 0a000000050000000800000006000000060000000a000000070000000800000001000000
 --- !u!1 &1973338276
 GameObject:
   m_ObjectHideFlags: 0

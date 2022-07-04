@@ -66,28 +66,22 @@ public class IngameManager : MonoBehaviour
         isGameStop = false;
         StartCoroutine(J.SpawnManager.StageCoroutine());
 
-
-        
-
         if (J.IngameManager.playerKillCount >= 15)
         {
-            J.IngameManager.ResetKillCount();
             J.SpawnManager.ingameStage = INGAMESTAGE.SECONDSTAGE;
             J.SpawnManager.RoundEnd = true;
         }
-        else if (J.IngameManager.playerKillCount >= 20)
+        else if (J.IngameManager.playerKillCount >= 35)
         {
-            J.IngameManager.ResetKillCount();
             J.SpawnManager.ingameStage = INGAMESTAGE.THIRDSTAGE;
             J.SpawnManager.RoundEnd = true;
         }
-        else if (J.IngameManager.playerKillCount >= 30)
+        else if (J.IngameManager.playerKillCount >= 60)
         {
-            J.IngameManager.ResetKillCount();
             J.SpawnManager.ingameStage = INGAMESTAGE.BOSSSTAGE;
             J.SpawnManager.RoundEnd = true;
         }
-        else if (J.IngameManager.playerKillCount >= 1)
+        else if (J.IngameManager.playerKillCount >= 61)
         {
             Debug.Log("게임 클리어");
         }

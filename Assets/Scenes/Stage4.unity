@@ -1196,6 +1196,7 @@ MonoBehaviour:
   brickParent: {fileID: 0}
   brickList: []
   brickObj: {fileID: 0}
+  SK: 3
 --- !u!1 &1200788484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1443,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1053593426854466912, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
+      propertyPath: dashSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053593426854466912, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
+      propertyPath: defaultTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1053593426854466913, guid: 2d4458cd283099e49a83fb8d56a7408d, type: 3}
       propertyPath: m_Name
       value: B_Player
@@ -1745,7 +1754,7 @@ MonoBehaviour:
   randomEnemyType: 0
   maxSpawnTime: 0
   RoundEnd: 1
-  maxTypeCount: 0a000000050000000800000006000000060000000a0000000a0000000a00000001000000
+  maxTypeCount: 0a000000050000000800000006000000060000000a000000070000000800000001000000
 --- !u!1 &1833081370
 GameObject:
   m_ObjectHideFlags: 0

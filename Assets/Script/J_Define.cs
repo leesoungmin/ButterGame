@@ -54,10 +54,13 @@ public enum ENEMYTYPE
     MOLE,
     GOLEM,
     WATERELEMENT,
-    FROG,
     SLIME,
+    FROG,
+    MERMAID,
     FIREELEMENT,
     FIREWIZARD,
+    FIREMONKEY,
+    CERBERUS,
 }
 
 
