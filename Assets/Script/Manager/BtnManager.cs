@@ -10,7 +10,10 @@ public class BtnManager : MonoBehaviour
     public GameObject Setting_PopUp;
 
     private int SceneNum;
-
+    void Start()
+    {
+        Time.timeScale = 1;    
+    }
     public void OnClick_1Stage_Btn()
     {
         SceneNum = 1;
