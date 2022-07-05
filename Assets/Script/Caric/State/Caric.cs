@@ -161,11 +161,8 @@ public abstract class Caric : MonoBehaviour
     {
         //J.IngameManager.playerKillCount += 1;
         Debug.Log("자살해버렸어 헤이헤이");
-        J.SpawnManager.EnemiesDestroy.Remove(gameObject.GetComponent<EnemyBase>());
-        if(J.SpawnManager.EnemySpawnPoints.Count <= 0)
-        {
-            J.SpawnManager.ingameStage++;
-        }
+        J.SpawnManager.enemyCount--;
+
         Destroy(gameObject);
     }
 

@@ -39,6 +39,8 @@ public class SpawnManager : MonoBehaviour
     List<GameObject> EntytyList = new List<GameObject>();
     public List<Action> RoundFuncList = new List<Action>();
 
+    public int enemyCount = 0;
+
     void Start()
     {
         //Enemy_GroundElement = Resources.Load<GameObject>("Prefab/GroundElement");
@@ -58,6 +60,7 @@ public class SpawnManager : MonoBehaviour
 
                 StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
                 StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
+                enemyCount = maxTypeCount[0] + maxTypeCount[1];
 
                 //yield return StartCoroutine(EnemyDie(EntytyList, 15));
                 break;
@@ -66,6 +69,7 @@ public class SpawnManager : MonoBehaviour
                 StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
                 StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
                 StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[4]));
+                enemyCount = maxTypeCount[2] + maxTypeCount[3] + maxTypeCount[4];
 
                 break;
             case INGAMESTAGE.THIRDSTAGE:
@@ -73,6 +77,8 @@ public class SpawnManager : MonoBehaviour
                 StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[5]));
                 StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[6]));
                 StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[7]));
+                enemyCount = maxTypeCount[5] + maxTypeCount[6] + maxTypeCount[7];
+
                 break;
             case INGAMESTAGE.BOSSSTAGE:
 
@@ -87,6 +93,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator EnemySpawn(GameObject enemy, int maxTypeCount)
     {
         int curCount = 0;
+
         while (curCount < maxTypeCount)
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));

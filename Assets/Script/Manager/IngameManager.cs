@@ -47,9 +47,13 @@ public class IngameManager : MonoBehaviour
 
             case INGAMESTEP.PLAYING:
 
-                //StageSpawn();
-                StageStart();
+                if (J.SpawnManager.enemyCount == 0) 
+                {
+                    StageStart();
+                    J.SpawnManager.ingameStage++;
+                }
 
+                //StageSpawn();
                 
                 // if(!isGameStop)
                 // {

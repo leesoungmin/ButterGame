@@ -64,11 +64,8 @@ public abstract class EnemyBase : Caric
         if (GetComponent<State>().GetType().Name == "EnemyDie")
             return;
         Debug.Log("죽어버렸어 헤이헤이");
-        J.SpawnManager.EnemiesDestroy.Remove(this);
-        if (J.SpawnManager.EnemySpawnPoints.Count <= 0)
-        {
-            J.SpawnManager.ingameStage++;
-        }
+        
+        J.SpawnManager.enemyCount--;
 
         base.Die();
         aiState.ChangeState(gameObject.AddComponent<EnemyDie>());
