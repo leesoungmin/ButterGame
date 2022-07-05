@@ -22,7 +22,8 @@ public class WizardBullet : Caric
     void Fire()
     {
         Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
-        rigid.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Impulse);
+        Vector3 dirVec = player.transform.position - transform.position;
+        rigid.AddForce(dirVec.normalized * speed * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)

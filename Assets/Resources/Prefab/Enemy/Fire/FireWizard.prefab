@@ -143,6 +143,11 @@ MonoBehaviour:
   IsGround: 0
   isMoleinvcible: 0
   playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 7
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
@@ -158,7 +163,7 @@ MonoBehaviour:
   - {fileID: 4806201350080703733, guid: d25006aad243c2043b630cc1529fb428, type: 3}
   - {fileID: 5532708302340532327, guid: f07ba569a6cd74c41a5dab5738a25b2d, type: 3}
   - {fileID: 2460592883445414797, guid: 0711f630af5d6cd41aeda122326d49e1, type: 3}
-  obj_FireWizardBullet: {fileID: 7250044643031566546, guid: 341653ddb070feb4a82e660a6103e076, type: 3}
+  obj_FireWizardBullet: {fileID: 1323299329982226104, guid: f32c0d01d4974a349a77ce138b213d52, type: 3}
 --- !u!50 &8954021895323687280
 Rigidbody2D:
   serializedVersion: 4
