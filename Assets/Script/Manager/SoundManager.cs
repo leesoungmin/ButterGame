@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
         foreach(var clip in audioClips) 
         {
             audioclipPairs.Add(clip.name, clip);
-           AudioClip a = audioclipPairs["¾Ó±â¸ð"];
+            //AudioClip a = audioclipPairs["ï¿½Ó±ï¿½ï¿½"];
         }
     }
 

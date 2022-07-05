@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -139,20 +139,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd410ee73971a4fb6ad3d6101d2acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
   CS: 0
+  hitEffectPrefab: {fileID: 0}
   Hp: 0
   Dmg: 0
   MoveSpeed: 0
   DelayTime: 0
   Direction: 0
   bulletSpeed: 4
+  x: 0
+  JumpForce: 0
+  IsGround: 0
+  isMoleinvcible: 0
+  playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 0.1
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
-  player: {fileID: 0}
   enemyType: 1
   monsterType: 2
   AttackState: {fileID: 0}
+  playerJumpState: {fileID: 0}
   anim: {fileID: 0}
   spriteRenderer: {fileID: 0}
   collider2D: {fileID: 0}

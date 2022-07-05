@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class WaterElementBullet : Caric
 {
-   float speed = 8f;
+   float speed = 9f;
     public Player_Main player;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType(typeof(Player_Main)) as Player_Main;
-        Destroy(gameObject,1.8f);
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class WaterElementBullet : Caric
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "Ground")
         {
             Destroy(gameObject);
             Debug.Log("우히히히힣");

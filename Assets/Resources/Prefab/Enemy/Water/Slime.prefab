@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
   CS: 0
+  hitEffectPrefab: {fileID: 0}
   Hp: 0
   Dmg: 0
   MoveSpeed: 0
