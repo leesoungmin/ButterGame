@@ -57,9 +57,6 @@ public class SpawnManager : MonoBehaviour
                     Debug.Log("땅 스테이지 시작");
 
                     RoundEnd = false;
-
-                    // StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
-
                     StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
                     StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
 
@@ -83,7 +80,7 @@ public class SpawnManager : MonoBehaviour
                 case INGAMESTAGE.BOSSSTAGE:
                     StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
 
-                    break;
+                break;
             }
         }
 

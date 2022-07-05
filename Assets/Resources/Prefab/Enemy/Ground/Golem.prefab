@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
   CS: 0
+  hitEffectPrefab: {fileID: 8118119204613424975, guid: c5e1cb2ab51cd134c8785e34e2e8d717, type: 3}
   Hp: 0
   Dmg: 0
   MoveSpeed: 0
@@ -178,6 +179,13 @@ MonoBehaviour:
   x: 0
   JumpForce: 0
   IsGround: 0
+  isMoleinvcible: 0
+  playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 0.1
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}

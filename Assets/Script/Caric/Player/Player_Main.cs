@@ -12,6 +12,8 @@ public class MoveRange
 public partial class Player_Main : Caric
 {
     public MoveRange moveRange;
+
+    public AudioClip clip;
     void Init()
     {
         Hp = 100;
@@ -105,6 +107,8 @@ public partial class Player_Main : Caric
             anim.SetBool("isJump", true);
 
             IsGround = false;
+
+            SoundManager.instace.SFXPlay("Jump");
             CS = CARICSTATE.JUMP;
         }
 

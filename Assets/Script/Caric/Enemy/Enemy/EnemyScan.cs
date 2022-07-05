@@ -9,6 +9,8 @@ public class EnemyScan : State
         aiState = GetComponent<AiState>();
         caric = GetComponent<Caric>();
         
+        caric.isMoleinvcible = false;
+        
         Debug.Log("tmzos");
     }
 

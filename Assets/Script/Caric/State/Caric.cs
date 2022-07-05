@@ -6,6 +6,7 @@ public abstract class Caric : MonoBehaviour
 {
     public Caric Owner = null;
     public CARICSTATE CS = CARICSTATE.IDLE;
+    public GameObject hitEffectPrefab = null;
     public int Hp = 0;
     public int Dmg = 0;
     public float MoveSpeed = 0;
@@ -22,7 +23,7 @@ public abstract class Caric : MonoBehaviour
     public float defaultSpeed = 0;
     public float dashSpeed = 0;
     public float dashTime = 0;
-    public float defaultTime = 7f;
+    public float defaultTime = 0.1f;
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
@@ -91,11 +92,16 @@ public abstract class Caric : MonoBehaviour
                 MoveSpeed = 2f;
                 break;
             case ENEMYTYPE.GOLEM:
-                Hp = 200;
+                Hp = 400;
                 Dmg = 10;
                 MoveSpeed = 0.7f;
                 break;
             case ENEMYTYPE.WATERELEMENT:
+                Hp = 20;
+                Dmg = 5;
+                MoveSpeed = 1.5f;
+                break;
+            case ENEMYTYPE.SLIME:
                 Hp = 20;
                 Dmg = 5;
                 MoveSpeed = 1.5f;
@@ -105,10 +111,10 @@ public abstract class Caric : MonoBehaviour
                 Dmg = 5;
                 MoveSpeed = 1.5f;
                 break;
-            case ENEMYTYPE.SLIME:
-                Hp = 20;
-                Dmg = 5;
-                MoveSpeed = 1.5f;
+                case ENEMYTYPE.MERMAID:
+                Hp = 700;
+                Dmg = 10;
+                MoveSpeed = 2.5f;
                 break;
             case ENEMYTYPE.FIREELEMENT:
                 Hp = 20;
@@ -119,6 +125,13 @@ public abstract class Caric : MonoBehaviour
                 Hp = 20;
                 Dmg = 10;
                 MoveSpeed = 1f;
+                break;
+                case ENEMYTYPE.FIREMONKEY:
+                break;
+                case ENEMYTYPE.CERBERUS:
+                Hp = 1000;
+                Dmg = 15;
+                MoveSpeed = 1.7f;
                 break;
         }
         if (gameObject.tag == "Player")
@@ -156,6 +169,16 @@ public abstract class Caric : MonoBehaviour
     public void ObjDestroy()
     {
         Destroy(gameObject);
+    }
+
+    public void InvinTrue()
+    {
+        isMoleinvcible = true;
+    }
+
+    public void InvinFalse()
+    {
+        isMoleinvcible = false;
     }
 
     public void MoleAttack2()
