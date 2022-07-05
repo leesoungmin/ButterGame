@@ -9,10 +9,17 @@ public class Mermaid : EnemyBase
     public GameObject BubblePos1 = null;
     public GameObject BubblePos2 = null;
     public GameObject TidePrefab = null;
-    public GameObject RedScreen = null; 
+    public GameObject RedScreen = null;
     public GameObject[] BulletPos = null;
     public override State GetState()
     {
         return gameObject.AddComponent<MermaidAttack>();
+    }
+    void Update()
+    {
+        if (Hp <= 0)
+        {
+            BtnManager.instace.GameClear.SetActive(true);
+        }
     }
 }
