@@ -9,6 +9,14 @@ public class Golem : EnemyBase
     public GameObject[] obj_RedScreen = null;
     public override State GetState()
     {
+
         return gameObject.AddComponent<GroundGolemAttack>();
+    }
+    void Update()
+    {
+        if (Hp <= 0)
+        {
+            BtnManager.instace.GameClear.SetActive(true);
+        }
     }
 }

@@ -9,7 +9,7 @@ public class GroundTrollAttack : State
     {
         aiState = GetComponent<AiState>();
         caric = GetComponent<Caric>();
-
+        
         caric.anim.Play("Attack");
     }
 

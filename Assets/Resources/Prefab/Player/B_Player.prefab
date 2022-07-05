@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
   CS: 0
+  hitEffectPrefab: {fileID: 0}
   Hp: 0
   Dmg: 0
   MoveSpeed: 0
@@ -154,6 +155,13 @@ MonoBehaviour:
   x: 0
   JumpForce: 900
   IsGround: 0
+  isMoleinvcible: 0
+  playerMain: {fileID: 0}
+  isDash: 0
+  defaultSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  defaultTime: 0.1
   maxAttackTime: 0
   curAttackTime: 0
   Target_Pos: {x: 0, y: 0}
@@ -168,6 +176,9 @@ MonoBehaviour:
   moveRange:
     xMin: -8
     xMax: 8
+  clip:
+  - {fileID: 8300000, guid: e252098d435b7304e9de4ec92b9490b6, type: 3}
+  - {fileID: 8300000, guid: 82b52fdcc31a2d14eab31e9057ecd535, type: 3}
 --- !u!50 &1053593426854466919
 Rigidbody2D:
   serializedVersion: 4

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class MoveRange
@@ -12,8 +13,7 @@ public class MoveRange
 public partial class Player_Main : Caric
 {
     public MoveRange moveRange;
-
-    public AudioClip clip;
+    public AudioClip[] clip;
     void Init()
     {
         Hp = 100;
@@ -36,6 +36,12 @@ public partial class Player_Main : Caric
     {
         if (J.IngameManager.isGameStop)
             return;
+
+
+        if (Hp <= 0)
+        {
+            BtnManager.instace.GameOver.SetActive(true);
+        }
 
         KeyInput();
         //ScreeChik();
@@ -73,8 +79,8 @@ public partial class Player_Main : Caric
                 break;
 
             case CARICSTATE.HIT:
-                
-                
+
+
 
                 break;
 
@@ -108,8 +114,8 @@ public partial class Player_Main : Caric
 
             IsGround = false;
 
-            SoundManager.instace.SFXPlay("Jump");
             CS = CARICSTATE.JUMP;
+            SoundManager.instace.SFXPlay("Jump", clip[0]);
         }
 
     }
@@ -122,6 +128,7 @@ public partial class Player_Main : Caric
     {
         base.Hit();
         anim.SetTrigger("isHit");
+        SoundManager.instace.SFXPlay("Jump", clip[1]);
         CS = CARICSTATE.HIT;
     }
 
@@ -142,21 +149,21 @@ public partial class Player_Main : Caric
         }
 
         //this.transform.Translate(new Vector2(MoveSpeed * x * Time.smoothDeltaTime, 0));
-        
+
         var curPos = transform.position;
-        curPos += new Vector3(x,0,0) * defaultSpeed * Time.deltaTime;
+        curPos += new Vector3(x, 0, 0) * defaultSpeed * Time.deltaTime;
         curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
         transform.position = curPos;
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isDash = true;
         }
 
-        if(dashTime <= 0)
+        if (dashTime <= 0)
         {
             defaultSpeed = MoveSpeed;
-            if(isDash)
+            if (isDash)
                 dashTime = defaultTime;
         }
         else
@@ -179,8 +186,8 @@ public partial class Player_Main : Caric
     void ScreeChik()
     {
         Vector3 worlPos = Camera.main.WorldToViewportPoint(this.transform.position);
-        if(worlPos.x < -8.3f) worlPos.x = -8.3f;
-        if(worlPos.x > 8f) worlPos.x  = 8f;
+        if (worlPos.x < -8.3f) worlPos.x = -8.3f;
+        if (worlPos.x > 8f) worlPos.x = 8f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worlPos);
     }
 
@@ -191,15 +198,15 @@ public partial class Player_Main : Caric
         {
             IsGround = true;
         }
-        else if(other.gameObject.tag == "Enemy")
+        else if (other.gameObject.tag == "Enemy")
         {
-            new JudgmentSign((other.gameObject.GetComponent<Caric>().Owner == null)? other.gameObject.GetComponent<Caric>() : other.gameObject.GetComponent<Caric>().Owner, this);
+            new JudgmentSign((other.gameObject.GetComponent<Caric>().Owner == null) ? other.gameObject.GetComponent<Caric>() : other.gameObject.GetComponent<Caric>().Owner, this);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy") 
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy")
         {
             new JudgmentSign((other.GetComponent<Caric>().Owner == null) ? other.GetComponent<Caric>() : other.GetComponent<Caric>().Owner, this);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Troll : EnemyBase
 {
+
     public override State GetState()
     {
         return gameObject.AddComponent<GroundTrollAttack>();

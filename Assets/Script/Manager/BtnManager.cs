@@ -6,13 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class BtnManager : MonoBehaviour
 {
-    public GameObject Title_BG;
-    public GameObject Setting_PopUp;
+
+    public static BtnManager instace;
+    public GameObject GameClear;
+    public GameObject GameOver;
 
     private int SceneNum;
+    void Awake()
+    {
+        instace = this;    
+    }
     void Start()
     {
-        Time.timeScale = 1;    
+        Time.timeScale = 1;
+    }
+    public void OnClickMenu_TabtoStart()
+    {
+        SceneManager.LoadScene(1);
     }
     public void OnClick_1Stage_Btn()
     {
@@ -25,35 +35,34 @@ public class BtnManager : MonoBehaviour
         SceneNum = 2;
         StartCoroutine(Stage_Move());
     }
-    public void OnClick_3Stage_Btn()
-    {
-        SceneNum = 3;
-        StartCoroutine(Stage_Move());
-    }
-
     public void OnClick_4Stage_Btn()
     {
         SceneNum = 4;
         StartCoroutine(Stage_Move());
     }
-
-    public void OnClickTabtoStart_Btn()
+    public void OnClick_Exit()
     {
-        Title_BG.SetActive(false);
+        SceneManager.LoadScene(1);
     }
-    public void OnClickSetting_Btn()
+    public void OnClick_Stage1_GameOver_Retry()
     {
-        Time.timeScale = 0;
-        Setting_PopUp.SetActive(true);
+        SceneManager.LoadScene(2);
     }
-    public void OnClickReturn_Btn()
+    public void OnClick_Stage2_GameOver_Retry()
     {
-        Time.timeScale = 1;
-        Setting_PopUp.SetActive(false);
+        SceneManager.LoadScene(3);
     }
-    public void OnClickQuit_Btn()
+    public void OnClick_Stage4_GameOver_Retry()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
+    }
+    public void OnClick_Stage1_GameClear_NextStage()
+    {
+        SceneManager.LoadScene(3);
+    }
+    public void OnClick_Stage2_GameClear_NextStage()
+    {
+        SceneManager.LoadScene(4);
     }
     IEnumerator Stage_Move()
     {
@@ -63,19 +72,12 @@ public class BtnManager : MonoBehaviour
         {
             case 1:
                 Debug.Log("1Stage열림");
-                SceneManager.LoadScene(1);
-                break;
-
-            case 2:
-                Debug.Log("2Stage열림");
                 SceneManager.LoadScene(2);
                 break;
-
-            case 3:
-                Debug.Log("3Stage열림");
+            case 2:
+                Debug.Log("2Stage열림");
                 SceneManager.LoadScene(3);
                 break;
-
             case 4:
                 Debug.Log("4Stage열림");
                 SceneManager.LoadScene(4);
