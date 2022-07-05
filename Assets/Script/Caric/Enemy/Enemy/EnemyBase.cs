@@ -14,9 +14,9 @@ public abstract class EnemyBase : Caric
     void Init()
     {
         aiState = GetComponent<AiState>();
-        
+
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
-    } 
+    }
 
     protected void Start()
     {
@@ -26,41 +26,50 @@ public abstract class EnemyBase : Caric
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+
     }
 
     public override void Hit()
     {
-        if(isMoleinvcible)
+        if (isMoleinvcible)
         {
             return;
         }
 
         base.Hit();
 
-        switch(enemyType)
+        switch (enemyType)
         {
             case ENEMYTYPE.GOLEM:
-            Instantiate(hitEffectPrefab,gameObject.transform.position, Quaternion.identity);
-            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
-            break;
+                Instantiate(hitEffectPrefab, gameObject.transform.position, Quaternion.identity);
+                aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+                break;
             case ENEMYTYPE.MERMAID:
-            Instantiate(hitEffectPrefab,gameObject.transform.position, Quaternion.identity);
-            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
-            break;
+                Instantiate(hitEffectPrefab, gameObject.transform.position, Quaternion.identity);
+                aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+                break;
             case ENEMYTYPE.CERBERUS:
-            aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
-            break;
+                aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
+                break;
             default:
-            aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
-            break;
+                aiState.ChangeState(gameObject.AddComponent<EnemyHit>());
+                break;
         }
-
-  
     }
+
+
 
     public override void Die()
     {
+        if (GetComponent<State>().GetType().Name == "EnemyDie")
+            return;
+        Debug.Log("죽어버렸어 헤이헤이");
+        J.SpawnManager.EnemiesDestroy.Remove(this);
+        if (J.SpawnManager.EnemySpawnPoints.Count <= 0)
+        {
+            J.SpawnManager.ingameStage++;
+        }
+
         base.Die();
         aiState.ChangeState(gameObject.AddComponent<EnemyDie>());
     }

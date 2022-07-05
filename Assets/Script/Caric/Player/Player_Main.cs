@@ -11,21 +11,25 @@ public class MoveRange
 
 public partial class Player_Main : Caric
 {
+    ParticleSystem playerDashParticle = null;
     public MoveRange moveRange;
-
     public AudioClip clip;
     void Init()
     {
         Hp = 100;
         Dmg = 10;
         MoveSpeed = 6;
+        maxDashCool = 7f;
         defaultSpeed = MoveSpeed;
+        curDashCool = 0;
+        isPlayerInvcible = false;
     }
     // Start is called before the first frame update
     void Start()
     {
         Init();
 
+        playerDashParticle = GetComponentInChildren<ParticleSystem>();
 
     }
 
@@ -73,8 +77,8 @@ public partial class Player_Main : Caric
                 break;
 
             case CARICSTATE.HIT:
-                
-                
+
+
 
                 break;
 
@@ -101,6 +105,9 @@ public partial class Player_Main : Caric
         }
         if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
+
+            SoundManager.instace.SFXPlay("Jump");
+
             rigidbody2D.AddForce(Vector2.up * JumpForce);
 
             anim.SetBool("isWalk", false);
@@ -108,7 +115,6 @@ public partial class Player_Main : Caric
 
             IsGround = false;
 
-            SoundManager.instace.SFXPlay("Jump");
             CS = CARICSTATE.JUMP;
         }
 
@@ -120,11 +126,33 @@ public partial class Player_Main : Caric
     }
     public override void Hit()
     {
+        
+
         base.Hit();
         anim.SetTrigger("isHit");
         CS = CARICSTATE.HIT;
     }
 
+    void Unbeatable()
+    {
+        isPlayerInvcible = true;
+        if (isPlayerInvcible)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
+        }
+
+        Invoke("UnbeatableFalse",3f);
+    }
+
+    void UnbeatableFalse()
+    {
+        isPlayerInvcible = false;
+        if (!isPlayerInvcible)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 1); //무적 타임 종료
+
+        }
+    }
     public void Move()
     {
 
@@ -142,22 +170,39 @@ public partial class Player_Main : Caric
         }
 
         //this.transform.Translate(new Vector2(MoveSpeed * x * Time.smoothDeltaTime, 0));
-        
+
         var curPos = transform.position;
-        curPos += new Vector3(x,0,0) * defaultSpeed * Time.deltaTime;
+        curPos += new Vector3(x, 0, 0) * defaultSpeed * Time.deltaTime;
         curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
         transform.position = curPos;
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (curDashCool >= maxDashCool)
         {
-            isDash = true;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                isDash = true;
+                isPlayerInvcible = true;
+                playerDashParticle.Play();
+                curDashCool = 0;
+            }
+        }
+        else
+        {
+            curDashCool += Time.deltaTime;
         }
 
-        if(dashTime <= 0)
+        if (dashTime <= 0)
         {
             defaultSpeed = MoveSpeed;
-            if(isDash)
+            if (isDash)
+            {
                 dashTime = defaultTime;
+            }
+            if (!isDash)
+            {
+                playerDashParticle.Stop();
+                isPlayerInvcible = false;
+            }
         }
         else
         {
@@ -179,8 +224,8 @@ public partial class Player_Main : Caric
     void ScreeChik()
     {
         Vector3 worlPos = Camera.main.WorldToViewportPoint(this.transform.position);
-        if(worlPos.x < -8.3f) worlPos.x = -8.3f;
-        if(worlPos.x > 8f) worlPos.x  = 8f;
+        if (worlPos.x < -8.3f) worlPos.x = -8.3f;
+        if (worlPos.x > 8f) worlPos.x = 8f;
         this.transform.position = Camera.main.ViewportToWorldPoint(worlPos);
     }
 
@@ -191,17 +236,25 @@ public partial class Player_Main : Caric
         {
             IsGround = true;
         }
-        else if(other.gameObject.tag == "Enemy")
+        else if (other.gameObject.tag == "Enemy")
         {
-            new JudgmentSign((other.gameObject.GetComponent<Caric>().Owner == null)? other.gameObject.GetComponent<Caric>() : other.gameObject.GetComponent<Caric>().Owner, this);
+            if (isPlayerInvcible)
+                return;
+            new JudgmentSign((other.gameObject.GetComponent<Caric>().Owner == null) ? other.gameObject.GetComponent<Caric>() : other.gameObject.GetComponent<Caric>().Owner, this);
+            Unbeatable();
+
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy") 
+        if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Enemy")
         {
+            if (isPlayerInvcible)
+                return;
+            
             new JudgmentSign((other.GetComponent<Caric>().Owner == null) ? other.GetComponent<Caric>() : other.GetComponent<Caric>().Owner, this);
+            Unbeatable();
         }
     }
     public override State GetState()

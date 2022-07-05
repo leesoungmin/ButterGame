@@ -28,6 +28,7 @@ public class SpawnManager : MonoBehaviour
     public INGAMESTAGE ingameStage = INGAMESTAGE.FIRSTSTAGE;
     public STAGEKIND stageKind = STAGEKIND.GROUNDSTAGE;
     public List<GameObject> GroundEnemies = new List<GameObject>();
+    public List<EnemyBase> EnemiesDestroy = new List<EnemyBase>();
     //public GameObject Enemy_GroundElement = null;
     public List<GameObject> EnemySpawnPoints = new List<GameObject>();
     public int randomEnemyType = 0;
@@ -48,42 +49,37 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator StageCoroutine()
     {
-        if (RoundEnd)
+
+        switch (ingameStage)
         {
-            switch (ingameStage)
-            {
-                case INGAMESTAGE.FIRSTSTAGE:
+            case INGAMESTAGE.FIRSTSTAGE:
 
-                    Debug.Log("땅 스테이지 시작");
+                Debug.Log("땅 스테이지 시작");
 
-                    RoundEnd = false;
-                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
-                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
+                StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
+                StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
 
-                    //yield return StartCoroutine(EnemyDie(EntytyList, 15));
-                    break;
-                case INGAMESTAGE.SECONDSTAGE:
+                //yield return StartCoroutine(EnemyDie(EntytyList, 15));
+                break;
+            case INGAMESTAGE.SECONDSTAGE:
 
-                    RoundEnd = false;
-                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
-                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
-                    StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[4]));
-
-                    break;
-                case INGAMESTAGE.THIRDSTAGE:
-
-                    RoundEnd = false;
-                    StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[5]));
-                    StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[6]));
-                    StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[7]));
-                    break;
-                case INGAMESTAGE.BOSSSTAGE:
-                    StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
+                StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[2]));
+                StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[3]));
+                StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[4]));
 
                 break;
-            }
-        }
+            case INGAMESTAGE.THIRDSTAGE:
 
+                StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[5]));
+                StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[6]));
+                StartCoroutine(EnemySpawn(GroundEnemies[2], maxTypeCount[7]));
+                break;
+            case INGAMESTAGE.BOSSSTAGE:
+
+                StartCoroutine(EnemySpawn(GroundEnemies[3], maxTypeCount[8]));
+
+                break;
+        }
 
         yield return null;
     }
@@ -95,6 +91,7 @@ public class SpawnManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
             var obj = Instantiate(enemy);
+            EnemiesDestroy.Add(obj.GetComponent<EnemyBase>());
             //EntytyList.Add(obj);
             obj.transform.position = EnemySpawnPoints[Random.Range(0, EnemySpawnPoints.Count)].transform.position;
             obj.transform.localRotation = Quaternion.identity;
@@ -103,28 +100,6 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    IEnumerator EnemyDie(List<EnemyBase> enemyList, int Count = 0)
-    {
-        while (enemyList.Count > Count)
-        {
-            for (int i = 0; i < enemyList.Count; i++)
-            {
-                if (enemyList[i].IsDestroy)
-                {
-                    StartCoroutine(DestroyEnemy(enemyList[i]));
-                    enemyList.Remove(enemyList[i]);
-                }
-            }
-            yield return null;
-        }
-    }
-
-    IEnumerator DestroyEnemy(EnemyBase enemy)
-    {
-        yield return null;
-
-        Destroy(enemy.gameObject);
-    }
 
     /*(public void EnemyCreate()
     {

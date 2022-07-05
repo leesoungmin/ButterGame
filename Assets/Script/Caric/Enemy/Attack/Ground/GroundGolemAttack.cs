@@ -72,7 +72,7 @@ public class GroundGolemAttack : State
             ++curBulletCnt;
             yield return new WaitForSeconds(0.25f);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
 
     }
@@ -84,7 +84,7 @@ public class GroundGolemAttack : State
         yield return new WaitForSeconds(0.4f);
         Instantiate(golem.obj_GroundGolemFist[0], golem.obj_RedScreen[0].transform.position, Quaternion.identity);
         Instantiate(golem.obj_GroundGolemFist[1], golem.obj_RedScreen[1].transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         aiState.ChangeState(gameObject.AddComponent<EnemyScan>());
     }
 

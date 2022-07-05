@@ -17,6 +17,7 @@ public abstract class Caric : MonoBehaviour
     public float JumpForce;
     public bool IsGround = false;
     public bool isMoleinvcible = false;
+    public bool isPlayerInvcible = false;
     public Player_Main playerMain = null;
 
     public bool isDash = false;
@@ -24,6 +25,9 @@ public abstract class Caric : MonoBehaviour
     public float dashSpeed = 0;
     public float dashTime = 0;
     public float defaultTime = 0.1f;
+
+    public float curDashCool = 0;
+    public float maxDashCool = 0;
 
     public float maxAttackTime = 0;
     public float curAttackTime = 0;
@@ -155,8 +159,13 @@ public abstract class Caric : MonoBehaviour
 
     public void EnemyChanageDie()
     {
-        J.IngameManager.playerKillCount += 1;
-        J.SpawnManager.GroundEnemies.Remove(gameObject);
+        //J.IngameManager.playerKillCount += 1;
+        Debug.Log("자살해버렸어 헤이헤이");
+        J.SpawnManager.EnemiesDestroy.Remove(gameObject.GetComponent<EnemyBase>());
+        if(J.SpawnManager.EnemySpawnPoints.Count <= 0)
+        {
+            J.SpawnManager.ingameStage++;
+        }
         Destroy(gameObject);
     }
 
