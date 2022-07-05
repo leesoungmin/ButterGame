@@ -24,6 +24,8 @@ public class IngameManager : MonoBehaviour
     void Start()
     {
         J.Start();
+        
+        
     }
 
     // Update is called once per frame
@@ -45,8 +47,10 @@ public class IngameManager : MonoBehaviour
 
             case INGAMESTEP.PLAYING:
 
-                StageSpawn();
+                //StageSpawn();
+                StageStart();
 
+                
                 // if(!isGameStop)
                 // {
                 //     isGameStop = true;
@@ -61,35 +65,10 @@ public class IngameManager : MonoBehaviour
         }
     }
 
-    void StageSpawn()
+    void StageStart()
     {
         isGameStop = false;
         StartCoroutine(J.SpawnManager.StageCoroutine());
-
-        if (J.IngameManager.playerKillCount >= 15)
-        {
-            J.SpawnManager.ingameStage = INGAMESTAGE.SECONDSTAGE;
-            J.SpawnManager.RoundEnd = true;
-        }
-        else if (J.IngameManager.playerKillCount >= 35)
-        {
-            J.SpawnManager.ingameStage = INGAMESTAGE.THIRDSTAGE;
-            J.SpawnManager.RoundEnd = true;
-        }
-        else if (J.IngameManager.playerKillCount >= 60)
-        {
-            J.SpawnManager.ingameStage = INGAMESTAGE.BOSSSTAGE;
-            J.SpawnManager.RoundEnd = true;
-        }
-        else if (J.IngameManager.playerKillCount >= 61)
-        {
-            Debug.Log("게임 클리어");
-        }
-    }
-
-    public void Spawn_Player()
-    {
-
     }
 
     public void ResetKillCount()
