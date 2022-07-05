@@ -40,6 +40,7 @@ public class IngameManager : MonoBehaviour
                 if (!J.BrickManager.BrickSpawn())
                 {
                     Debug.Log("Change Playing!!");
+                    StageStart();
                     IS = INGAMESTEP.PLAYING;
                 }
 

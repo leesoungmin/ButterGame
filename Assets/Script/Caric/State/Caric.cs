@@ -131,6 +131,9 @@ public abstract class Caric : MonoBehaviour
                 MoveSpeed = 1f;
                 break;
                 case ENEMYTYPE.FIREMONKEY:
+                Hp = 40;
+                Dmg = 10;
+                MoveSpeed = 2f;
                 break;
                 case ENEMYTYPE.CERBERUS:
                 Hp = 1000;

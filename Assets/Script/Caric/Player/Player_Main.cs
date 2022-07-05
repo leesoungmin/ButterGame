@@ -88,6 +88,41 @@ public partial class Player_Main : Caric
                 break;
         }
 
+        if (curDashCool >= maxDashCool)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                isDash = true;
+                isPlayerInvcible = true;
+                playerDashParticle.Play();
+                curDashCool = 0;
+            }
+        }
+        else
+        {
+            curDashCool += Time.deltaTime;
+        }
+
+        if (dashTime <= 0)
+        {
+            defaultSpeed = MoveSpeed;
+            if (isDash)
+            {
+                dashTime = defaultTime;
+            }
+            if (!isDash)
+            {
+                playerDashParticle.Stop();
+                isPlayerInvcible = false;
+            }
+        }
+        else
+        {
+            dashTime -= Time.deltaTime;
+            defaultSpeed = dashSpeed;
+        }
+        isDash = false;
+
         Debug.Log("Now State !! : " + CS.ToString());
 
     }
@@ -106,7 +141,7 @@ public partial class Player_Main : Caric
         if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
 
-            SoundManager.instace.SFXPlay("Jump");
+            //SoundManager.instace.SFXPlay("Jump");
 
             rigidbody2D.AddForce(Vector2.up * JumpForce);
 
@@ -176,40 +211,7 @@ public partial class Player_Main : Caric
         curPos.x = Mathf.Clamp(curPos.x, moveRange.xMin, moveRange.xMax);
         transform.position = curPos;
 
-        if (curDashCool >= maxDashCool)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                isDash = true;
-                isPlayerInvcible = true;
-                playerDashParticle.Play();
-                curDashCool = 0;
-            }
-        }
-        else
-        {
-            curDashCool += Time.deltaTime;
-        }
-
-        if (dashTime <= 0)
-        {
-            defaultSpeed = MoveSpeed;
-            if (isDash)
-            {
-                dashTime = defaultTime;
-            }
-            if (!isDash)
-            {
-                playerDashParticle.Stop();
-                isPlayerInvcible = false;
-            }
-        }
-        else
-        {
-            dashTime -= Time.deltaTime;
-            defaultSpeed = dashSpeed;
-        }
-        isDash = false;
+        
 
     }
 

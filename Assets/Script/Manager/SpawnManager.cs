@@ -58,6 +58,7 @@ public class SpawnManager : MonoBehaviour
 
                 Debug.Log("땅 스테이지 시작");
 
+                
                 StartCoroutine(EnemySpawn(GroundEnemies[0], maxTypeCount[0]));
                 StartCoroutine(EnemySpawn(GroundEnemies[1], maxTypeCount[1]));
                 enemyCount = maxTypeCount[0] + maxTypeCount[1];
